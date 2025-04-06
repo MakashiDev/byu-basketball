@@ -11,13 +11,13 @@ export function PlayerCard({ player }: PlayerCardProps) {
   const statusColors = {
     committed: "bg-green-600 hover:bg-green-600",
     transfer: "bg-amber-600 hover:bg-amber-600",
-    undecided: "bg-gray-600 hover:bg-gray-600",
+    unconfirmed: "bg-gray-600 hover:bg-gray-600",
   }
 
   const statusLabels = {
     committed: "Committed",
     transfer: "Transfer Portal",
-    undecided: "Undecided",
+    unconfirmed: "Unconfirmed",
   }
 
   return (

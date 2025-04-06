@@ -8,7 +8,7 @@ import { StatusFilter } from "@/components/status-filter"
 import { players } from "@/data/players"
 import { TeamStats } from "@/components/team-stats"
 
-type PlayerStatus = "committed" | "transfer" | "undecided"
+type PlayerStatus = "committed" | "transfer" | "unconfirmed"
 
 export function PlayerStatusDashboard() {
   const [selectedStatus, setSelectedStatus] = useState<PlayerStatus | "all">("all")
@@ -29,7 +29,7 @@ export function PlayerStatusDashboard() {
   const statusCounts = {
     committed: players.filter((p) => p.status === "committed").length,
     transfer: players.filter((p) => p.status === "transfer").length,
-    undecided: players.filter((p) => p.status === "undecided").length,
+    undecided: players.filter((p) => p.status === "unconfirmed").length,
   }
 
   return (
@@ -129,10 +129,10 @@ export function PlayerStatusDashboard() {
                 onClick={() => setSelectedStatus("transfer")}
               />
               <StatusFilter
-                status="undecided"
+                status="unconfirmed"
                 count={statusCounts.undecided}
-                selected={selectedStatus === "undecided"}
-                onClick={() => setSelectedStatus("undecided")}
+                selected={selectedStatus === "unconfirmed"}
+                onClick={() => setSelectedStatus("unconfirmed")}
               />
             </div>
           </div>
