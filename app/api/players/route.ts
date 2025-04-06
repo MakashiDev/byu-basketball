@@ -1,12 +1,15 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { isAuthenticated } from "@/lib/auth"
-import { players } from "@/data/players"
-
-// In a real application, this would interact with a database
-// This is a simplified version for demo purposes
+import { prisma } from "@/lib/prisma"
 
 export async function GET() {
-  return NextResponse.json({ players })
+  try {
+    const players = await prisma.player.findMany()
+    return NextResponse.json({ players })
+  } catch (error) {
+    console.error("Error fetching players:", error)
+    return NextResponse.json({ error: "Failed to fetch players" }, { status: 500 })
+  }
 }
 
 export async function POST(request: NextRequest) {
@@ -23,17 +26,23 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    // Generate a new ID (in a real app, the database would handle this)
-    const maxId = Math.max(...players.map((p) => p.id), 0)
-    const playerWithId = {
-      ...newPlayer,
-      id: maxId + 1,
-    }
+    // Create player in the database
+    const player = await prisma.player.create({
+      data: {
+        jerseyNumber: newPlayer.jerseyNumber,
+        name: newPlayer.name,
+        position: newPlayer.position || null,
+        height: newPlayer.height,
+        year: newPlayer.year,
+        hometown: newPlayer.hometown,
+        highSchoolOrPrevTeam: newPlayer.highSchoolOrPrevTeam,
+        status: newPlayer.status,
+        stats: newPlayer.stats || null,
+        image: newPlayer.image || null,
+      },
+    })
 
-    // Add to the players array (in a real app, this would be saved to a database)
-    players.push(playerWithId)
-
-    return NextResponse.json({ player: playerWithId })
+    return NextResponse.json({ player })
   } catch (error) {
     console.error("Error creating player:", error)
     return NextResponse.json({ error: "Failed to create player" }, { status: 500 })

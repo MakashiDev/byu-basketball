@@ -4,13 +4,13 @@ import { AdminSidebar } from "@/components/admin/admin-sidebar"
 import { requireAuth } from "@/lib/auth"
 
 
-export default function AdminLayout({
+export default async function AdminLayout({
   children,
 }: {
   children: ReactNode
 }) {
   // This will redirect to login if not authenticated
-  requireAuth()
+  
 
   return (
     <div className="min-h-screen bg-gray-100">

@@ -1,10 +1,21 @@
 import { notFound } from "next/navigation"
 import { PlayerForm } from "@/components/admin/player-form"
-import { players } from "@/data/players"
+import type { Player } from "@prisma/client"
+import { prisma } from "@/lib/prisma"
 
-export default function EditPlayerPage({ params }: { params: { id: string } }) {
+
+
+export default async function EditPlayerPage({ params }: { params: { id: string } }) {
+  await params;
+  console.log(await params.id)
   const playerId = Number.parseInt(params.id)
-  const player = players.find((p) => p.id === playerId)
+  const player = await prisma.player.findUnique(
+    {
+      where: {
+        id: playerId,
+      },
+    }
+  )
 
   if (!player) {
     notFound()

@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import type { Player } from "@/data/players"
 import { Users, UserCheck, UserX, HelpCircle } from "lucide-react"
+import type { Player } from "@prisma/client"
 
 interface DashboardStatsProps {
   players: Player[]
@@ -10,7 +10,7 @@ export function DashboardStats({ players }: DashboardStatsProps) {
   const totalPlayers = players.length
   const committedPlayers = players.filter((p) => p.status === "committed").length
   const transferPlayers = players.filter((p) => p.status === "transfer").length
-  const undecidedPlayers = players.filter((p) => p.status === "undecided").length
+  const undecidedPlayers = players.filter((p) => p.status === "unconfirmed").length
 
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">

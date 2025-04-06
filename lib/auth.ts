@@ -18,13 +18,14 @@ const AUTH_CONFIG = {
 export async function login(username: string, password: string) {
   try {
     const passwordHash = await hashPassword(password)
+    console.log(passwordHash)
 
     if (username === ADMIN_CREDENTIALS.username && passwordHash === ADMIN_CREDENTIALS.passwordHash) {
       // Generate a session token
       const token = await generateSessionToken(username)
       
       // Set a secure HTTP-only cookie with the session token
-      cookies().set(AUTH_CONFIG.tokenName, token, {
+      await cookies().set(AUTH_CONFIG.tokenName, token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         maxAge: AUTH_CONFIG.tokenExpiry,
@@ -46,13 +47,13 @@ export async function logout() {
   cookies().delete(AUTH_CONFIG.tokenName)
 }
 
-export function getAuthToken() {
-  return cookies().get(AUTH_CONFIG.tokenName)?.value
+export async function getAuthToken() {
+  return (await cookies()).get(AUTH_CONFIG.tokenName)?.value
 }
 
-export function isAuthenticated() {
+export async function isAuthenticated() {
   try {
-    const token = getAuthToken()
+    const token = await getAuthToken()
     
     if (!token) {
       return false
@@ -67,8 +68,8 @@ export function isAuthenticated() {
   }
 }
 
-export function requireAuth() {
-  if (!isAuthenticated()) {
+export async function requireAuth() {
+  if (!(await isAuthenticated())) {
     redirect("/admin/login")
   }
 }

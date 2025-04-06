@@ -4,7 +4,7 @@ import type React from "react"
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import type { Player } from "@/data/players"
+import type { Player } from "@prisma/client"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -103,6 +103,8 @@ export function PlayerForm({ player }: PlayerFormProps) {
                 id="jerseyNumber"
                 name="jerseyNumber"
                 type="number"
+                min={0}
+                max={99}
                 value={formData.jerseyNumber || ""}
                 onChange={handleNumberChange}
                 required
@@ -160,8 +162,23 @@ export function PlayerForm({ player }: PlayerFormProps) {
                   <SelectItem value="committed">Committed</SelectItem>
                   <SelectItem value="transfer">Transfer Portal</SelectItem>
                   <SelectItem value="undecided">Undecided</SelectItem>
+                  <SelectItem value="graduated">Graduated</SelectItem>
+                  <SelectItem value="transferred">Transferred</SelectItem>
+                  <SelectItem value="nba_draft">NBA Draft</SelectItem>
                 </SelectContent>
               </Select>
+            </div>
+            
+            <div className="space-y-2 flex items-center gap-2">
+              <input
+                type="checkbox"
+                id="formerPlayer"
+                name="formerPlayer"
+                checked={!!formData.formerPlayer}
+                onChange={(e) => setFormData((prev) => ({ ...prev, formerPlayer: e.target.checked }))}
+                className="h-4 w-4 rounded border-gray-300 text-[#002E5D] focus:ring-[#002E5D]"
+              />
+              <Label htmlFor="formerPlayer">Former Player (2024-25)</Label>
             </div>
 
             <div className="space-y-2">

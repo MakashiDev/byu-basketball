@@ -21,6 +21,12 @@ export function AdminSidebar() {
       active: pathname.includes("/admin/players") || pathname === "/admin/dashboard",
     },
     {
+      name: "Former Players",
+      href: "/admin/former-players",
+      icon: Users,
+      active: pathname.includes("/admin/former-players"),
+    },
+    {
       name: "Add Player",
       href: "/admin/players/new",
       icon: UserPlus,

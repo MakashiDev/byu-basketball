@@ -1,19 +1,23 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { isAuthenticated } from "@/lib/auth"
-import { players } from "@/data/players"
-
-// In a real application, this would interact with a database
-// This is a simplified version for demo purposes
+import { prisma } from "@/lib/prisma"
 
 export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
-  const id = Number.parseInt(params.id)
-  const player = players.find((p) => p.id === id)
+  try {
+    const id = Number.parseInt(params.id)
+    const player = await prisma.player.findUnique({
+      where: { id },
+    })
 
-  if (!player) {
-    return NextResponse.json({ error: "Player not found" }, { status: 404 })
+    if (!player) {
+      return NextResponse.json({ error: "Player not found" }, { status: 404 })
+    }
+
+    return NextResponse.json({ player })
+  } catch (error) {
+    console.error("Error fetching player:", error)
+    return NextResponse.json({ error: "Failed to fetch player" }, { status: 500 })
   }
-
-  return NextResponse.json({ player })
 }
 
 export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
@@ -25,16 +29,34 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   try {
     const id = Number.parseInt(params.id)
     const updatedPlayer = await request.json()
-    const index = players.findIndex((p) => p.id === id)
 
-    if (index === -1) {
+    // Check if player exists
+    const existingPlayer = await prisma.player.findUnique({
+      where: { id },
+    })
+
+    if (!existingPlayer) {
       return NextResponse.json({ error: "Player not found" }, { status: 404 })
     }
 
-    // Update the player (in a real app, this would update a database record)
-    players[index] = { ...players[index], ...updatedPlayer, id }
+    // Update the player in the database
+    const player = await prisma.player.update({
+      where: { id },
+      data: {
+        jerseyNumber: updatedPlayer.jerseyNumber ?? existingPlayer.jerseyNumber,
+        name: updatedPlayer.name ?? existingPlayer.name,
+        position: updatedPlayer.position,
+        height: updatedPlayer.height ?? existingPlayer.height,
+        year: updatedPlayer.year ?? existingPlayer.year,
+        hometown: updatedPlayer.hometown ?? existingPlayer.hometown,
+        highSchoolOrPrevTeam: updatedPlayer.highSchoolOrPrevTeam ?? existingPlayer.highSchoolOrPrevTeam,
+        status: updatedPlayer.status ?? existingPlayer.status,
+        stats: updatedPlayer.stats,
+        image: updatedPlayer.image,
+      },
+    })
 
-    return NextResponse.json({ player: players[index] })
+    return NextResponse.json({ player })
   } catch (error) {
     console.error("Error updating player:", error)
     return NextResponse.json({ error: "Failed to update player" }, { status: 500 })
@@ -49,17 +71,22 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
 
   try {
     const id = Number.parseInt(params.id)
-    const index = players.findIndex((p) => p.id === id)
 
-    if (index === -1) {
+    // Check if player exists
+    const existingPlayer = await prisma.player.findUnique({
+      where: { id },
+    })
+
+    if (!existingPlayer) {
       return NextResponse.json({ error: "Player not found" }, { status: 404 })
     }
 
-    // Remove the player (in a real app, this would delete from a database)
-    const deletedPlayer = players[index]
-    players.splice(index, 1)
+    // Delete the player from the database
+    const player = await prisma.player.delete({
+      where: { id },
+    })
 
-    return NextResponse.json({ player: deletedPlayer })
+    return NextResponse.json({ player })
   } catch (error) {
     console.error("Error deleting player:", error)
     return NextResponse.json({ error: "Failed to delete player" }, { status: 500 })

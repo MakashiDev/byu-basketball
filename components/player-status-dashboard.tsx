@@ -5,12 +5,16 @@ import Image from "next/image"
 import { ChevronDown } from "lucide-react"
 import { PlayerCard } from "@/components/player-card"
 import { StatusFilter } from "@/components/status-filter"
-import { players } from "@/data/players"
 import { TeamStats } from "@/components/team-stats"
+import type { Player } from "@prisma/client"
 
 type PlayerStatus = "committed" | "transfer" | "unconfirmed"
 
-export function PlayerStatusDashboard() {
+interface PlayerStatusDashboardProps {
+  players: Player[]
+}
+
+export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
   const [selectedStatus, setSelectedStatus] = useState<PlayerStatus | "all">("all")
   const [isScrolled, setIsScrolled] = useState(false)
 

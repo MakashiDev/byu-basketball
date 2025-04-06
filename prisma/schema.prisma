@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Player {
+  id                   Int     @id @default(autoincrement())
+  jerseyNumber         Int
+  name                 String
+  position             String?
+  height               String
+  year                 String
+  hometown             String
+  highSchoolOrPrevTeam String
+  status               String  // "committed" | "transfer" | "unconfirmed" | "graduated" | "transferred" | "nba_draft"
+  formerPlayer         Boolean @default(false)
+  stats                String?
+  image                String?
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+}

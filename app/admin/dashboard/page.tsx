@@ -2,9 +2,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { PlayerTable } from "@/components/admin/player-table"
 import { DashboardStats } from "@/components/admin/dashboard-stats"
-import { players } from "@/data/players"
+import { prisma } from "@/lib/prisma"
 
-export default function DashboardPage() {
+export default async function DashboardPage() {
+  const players = await prisma.player.findMany({
+    where: {
+      formerPlayer: false,
+    }
+  })
   return (
     <div className="space-y-6">
       <div>
@@ -39,7 +44,7 @@ export default function DashboardPage() {
               <CardDescription>Players committed to BYU for the upcoming season</CardDescription>
             </CardHeader>
             <CardContent>
-              <PlayerTable players={players.filter((p) => p.status === "committed")} />
+              <PlayerTable players={(await players).filter((p) => p.status === "committed")} />
             </CardContent>
           </Card>
         </TabsContent>
@@ -50,7 +55,7 @@ export default function DashboardPage() {
               <CardDescription>Players in the transfer portal</CardDescription>
             </CardHeader>
             <CardContent>
-              <PlayerTable players={players.filter((p) => p.status === "transfer")} />
+              <PlayerTable players={(await players).filter((p) => p.status === "transfer")} />
             </CardContent>
           </Card>
         </TabsContent>
@@ -61,7 +66,7 @@ export default function DashboardPage() {
               <CardDescription>Players with undecided status</CardDescription>
             </CardHeader>
             <CardContent>
-              <PlayerTable players={players.filter((p) => p.status === "undecided")} />
+              <PlayerTable players={(await players).filter((p) => p.status === "undecided")} />
             </CardContent>
           </Card>
         </TabsContent>
