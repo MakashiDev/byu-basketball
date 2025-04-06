@@ -206,7 +206,7 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
               <Image src="/images/byu-logo.png" alt="BYU Logo" width={60} height={60} />
               <div>
                 <h3 className="font-bold text-xl">BYU Cougars</h3>
-                <p className="text-white/70">Brigham Young University Athletics</p>
+                <p className="text-white/70">Disclaimer, this is a fan site and is not affiliated with BYU or the Big 12 Conference</p>
               </div>
             </div>
             <div className="flex items-center gap-6">
