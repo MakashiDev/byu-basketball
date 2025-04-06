@@ -29,14 +29,14 @@ export function StatusFilter({ status, count, selected, onClick }: StatusFilterP
       onClick={onClick}
       className={cn(
         "px-4 py-2 rounded-md text-sm font-medium flex items-center gap-2 transition-colors shadow-sm",
-        selected ? statusColors[status] : "bg-white text-gray-700 border border-gray-200 hover:bg-gray-50",
+        selected ? statusColors[status] : "bg-card text-card-foreground border border-border hover:bg-muted",
       )}
     >
       {statusLabels[status]}
       <span
         className={cn(
           "inline-flex items-center justify-center w-6 h-6 rounded-full text-xs font-bold",
-          selected ? "bg-white/20 text-white" : "bg-gray-100 text-gray-700",
+          selected ? "bg-white/20 text-white" : "bg-muted text-muted-foreground",
         )}
       >
         {count}

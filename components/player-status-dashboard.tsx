@@ -36,7 +36,7 @@ export function PlayerStatusDashboard() {
     <div className="relative">
       {/* Hero Section */}
       <div className="relative h-[60vh] min-h-[500px] w-full overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#002E5D]/80 to-[#002E5D]/95 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#002E5D]/80 dark:from-[#001a33]/80 to-[#002E5D]/95 dark:to-[#001a33]/95 z-10"></div>
         <Image
           src="/images/byu-basketball-court.jpg"
           alt="BYU Basketball Court"
@@ -62,7 +62,7 @@ export function PlayerStatusDashboard() {
 
       {/* Sticky Header */}
       <div
-        className={`sticky top-0 z-30 w-full bg-[#002E5D] text-white transition-all duration-300 ${
+        className={`sticky top-0 z-30 w-full bg-[#002E5D] dark:bg-[#001a33] text-white transition-all duration-300 ${
           isScrolled ? "py-2 shadow-lg" : "py-4"
         }`}
       >
@@ -91,8 +91,8 @@ export function PlayerStatusDashboard() {
         </div>
       </div>
 
-      {/* Team Stats Section */}
-      <div className="bg-gray-100 py-8 border-b border-gray-200">
+        {/* Team Stats Section */}
+      <div className="dark:bg-[#002E5D]/10 bg-muted py-8 border-b border-border">
         <div className="container mx-auto px-4">
           <TeamStats statusCounts={statusCounts} />
         </div>
@@ -102,8 +102,8 @@ export function PlayerStatusDashboard() {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
           <div className="flex flex-col gap-2">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#002E5D]">Player Status Tracker</h2>
-            <p className="text-gray-600">Track which players are committed, in the transfer portal, or undecided</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#002E5D] dark:text-blue-400">Player Status Tracker</h2>
+            <p className="text-muted-foreground">Track which players are committed, in the transfer portal, or undecided</p>
           </div>
 
           <div className="flex items-center gap-3">
@@ -146,26 +146,26 @@ export function PlayerStatusDashboard() {
       </div>
 
       {/* Cosmo Feature Section */}
-      <div className="bg-[#002E5D]/5 py-12 my-8">
+      <div className="bg-[#002E5D]/5 dark:bg-[#002E5D]/10 py-12 my-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="md:w-1/3 relative h-[300px] md:h-[400px]">
               <Image src="/images/cosmo.png" alt="Cosmo the Cougar" fill className="object-contain object-center" />
             </div>
             <div className="md:w-2/3">
-              <h2 className="text-3xl font-bold text-[#002E5D] mb-4">BYU Basketball: Big 12 Ready</h2>
-              <p className="text-lg text-gray-700 mb-4">
+              <h2 className="text-3xl font-bold text-[#002E5D] dark:text-blue-400 mb-4">BYU Basketball: Big 12 Ready</h2>
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
                 The Cougars are making their mark in the Big 12 Conference. With a strong roster of talented players,
                 BYU basketball is poised for success in one of college basketball's most competitive conferences.
               </p>
-              <p className="text-lg text-gray-700 mb-4">
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
                 As the 2025-26 season approaches, fans are eager to see which players will commit to the program and
                 which might explore opportunities elsewhere. Stay updated with our roster tracker to follow all the
                 latest player status changes.
               </p>
               <div className="flex items-center gap-4 mt-6">
                 <Image src="/images/byu-logo.png" alt="BYU Logo" width={60} height={60} />
-                <div className="h-12 w-0.5 bg-gray-300"></div>
+                <div className="h-12 w-0.5 bg-gray-300 dark:bg-gray-700"></div>
                 <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Big_12_logo_in_BYU_colors.svg/2560px-Big_12_logo_in_BYU_colors.svg.png" alt="Big 12 Logo" width={80} height={40} />
               </div>
             </div>
@@ -174,7 +174,7 @@ export function PlayerStatusDashboard() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-[#002E5D] text-white py-8 mt-12">
+      <footer className="bg-[#002E5D] dark:bg-[#001a33] text-white py-8 mt-12">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-4">
