@@ -59,7 +59,7 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
             <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Big_12_logo_in_BYU_colors.svg/2560px-Big_12_logo_in_BYU_colors.svg.png" alt="Big 12 Logo" width={130} height={80} className="drop-shadow-lg" />
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-4 drop-shadow-md">
-            BYU Basketball Roster
+          Unofficial BYU Basketball Roster
           </h1>
           <p className="text-xl md:text-2xl text-center max-w-2xl text-white/90 drop-shadow">2025-26 Season Outlook</p>
           <div className="absolute bottom-8 left-0 right-0 flex justify-center animate-bounce">
