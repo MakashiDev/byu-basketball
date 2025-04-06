@@ -73,7 +73,18 @@ export function PlayerCard({ player }: PlayerCardProps) {
             <p className="text-xs text-muted-foreground">Season Stats</p>
             <Image src="/images/byu-logo.png" alt="BYU Logo" width={20} height={20} className="opacity-50" />
           </div>
-          <p className="text-sm font-medium text-[#002E5D] dark:text-blue-400">{player.stats}</p>
+          <p className="text-sm font-medium flex flex-wrap gap-2">
+  {player.stats.split(', ').map((stat, index) => {
+    const match = stat.match(/^([\d.]+)\s*(.*)$/); // Match number and stat text
+    return (
+      <span key={index}>
+        <span className="text-[#002E5D] dark:text-blue-400 font-bold">{match?.[0] && match[1]}</span>{' '}
+        <span className="text-gray-300">{match?.[0] && match[2]}</span>
+      </span>
+    );
+  })}
+</p>
+
         </div>
       </CardFooter>
     </Card>
