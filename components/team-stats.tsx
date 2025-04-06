@@ -21,7 +21,7 @@ export function TeamStats({ statusCounts }: TeamStatsProps) {
       <div className="flex justify-center mb-8">
         <div className="flex items-center gap-4 bg-card px-6 py-3 rounded-full shadow-md">
           <Image src="/images/byu-logo.png" alt="BYU Logo" width={40} height={40} />
-          <h2 className="text-xl font-bold text-[#002E5D] dark:text-blue-400">2024-25 Roster Breakdown</h2>
+          <h2 className="text-xl font-bold text-[#002E5D] dark:text-blue-400">2025-26 Roster Breakdown</h2>
         </div>
       </div>
 
