@@ -5,11 +5,21 @@ import { DashboardStats } from "@/components/admin/dashboard-stats"
 import { prisma } from "@/lib/prisma"
 
 export default async function DashboardPage() {
-  const players = await prisma.player.findMany({
-    where: {
-      formerPlayer: false,
-    }
-  })
+  const [players, graduates] = await Promise.all([
+    prisma.player.findMany({
+      where: {
+        formerPlayer: false,
+        status: {
+          not: "graduated"
+        }
+      }
+    }),
+    prisma.player.findMany({
+      where: {
+        status: "graduated"
+      }
+    })
+  ])
   return (
     <div className="space-y-6">
       <div>
@@ -20,11 +30,12 @@ export default async function DashboardPage() {
       <DashboardStats players={players} />
 
       <Tabs defaultValue="all" className="w-full">
-        <TabsList className="grid grid-cols-4 w-full max-w-md">
+        <TabsList className="grid grid-cols-5 w-full max-w-md">
           <TabsTrigger value="all">All Players</TabsTrigger>
           <TabsTrigger value="committed">Committed</TabsTrigger>
           <TabsTrigger value="transfer">Transfer</TabsTrigger>
           <TabsTrigger value="undecided">Undecided</TabsTrigger>
+          <TabsTrigger value="graduated">Graduated</TabsTrigger>
         </TabsList>
         <TabsContent value="all">
           <Card>
@@ -67,6 +78,17 @@ export default async function DashboardPage() {
             </CardHeader>
             <CardContent>
               <PlayerTable players={(await players).filter((p) => p.status === "undecided")} />
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="graduated">
+          <Card>
+            <CardHeader>
+              <CardTitle>Graduated Players</CardTitle>
+              <CardDescription>Players who have graduated from BYU</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <PlayerTable players={graduates} />
             </CardContent>
           </Card>
         </TabsContent>

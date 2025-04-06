@@ -27,13 +27,17 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const currentPlayers = players.filter(p => !['graduated', 'transferred', 'nba_draft'].includes(p.status))
+  const graduatedPlayers = players.filter(p => p.status === 'graduated')
+
   const filteredPlayers =
-    selectedStatus === "all" ? players : players.filter((player) => player.status === selectedStatus)
+    selectedStatus === "all" ? currentPlayers : currentPlayers.filter((player) => player.status === selectedStatus)
 
   const statusCounts = {
-    committed: players.filter((p) => p.status === "committed").length,
-    transfer: players.filter((p) => p.status === "transfer").length,
-    undecided: players.filter((p) => p.status === "unconfirmed").length,
+    committed: currentPlayers.filter((p) => p.status === "committed").length,
+    transfer: currentPlayers.filter((p) => p.status === "transfer").length,
+    undecided: currentPlayers.filter((p) => p.status === "unconfirmed").length,
+    graduated: graduatedPlayers.length
   }
 
   return (
@@ -116,7 +120,7 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
             <div className="flex flex-wrap gap-2">
               <StatusFilter
                 status="all"
-                count={players.length}
+                count={currentPlayers.length}
                 selected={selectedStatus === "all"}
                 onClick={() => setSelectedStatus("all")}
               />
@@ -148,6 +152,23 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
           ))}
         </div>
       </div>
+
+      {/* Graduated Players Section */}
+      {graduatedPlayers.length > 0 && (
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#002E5D] dark:text-blue-400">Graduated Players</h2>
+              <p className="text-muted-foreground">Players who have graduated from the program</p>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {graduatedPlayers.map((player) => (
+                <PlayerCard key={player.id} player={player} />
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Cosmo Feature Section */}
       <div className="bg-[#002E5D]/5 dark:bg-[#002E5D]/10 py-12 my-8">

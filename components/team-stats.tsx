@@ -74,10 +74,6 @@ export function TeamStats({ statusCounts }: TeamStatsProps) {
           <p className="text-sm text-muted-foreground mt-1">{undecidedPercentage}% of roster</p>
         </div>
       </div>
-
-      <div className="absolute -top-4 right-0 hidden lg:block">
-        <Image src="/images/big12-logo.png" alt="Big 12 Logo" width={100} height={50} className="opacity-20" />
-      </div>
     </div>
   )
 }

@@ -25,7 +25,7 @@ export async function login(username: string, password: string) {
       const token = await generateSessionToken(username)
       
       // Set a secure HTTP-only cookie with the session token
-      await cookies().set(AUTH_CONFIG.tokenName, token, {
+      await (await cookies()).set(AUTH_CONFIG.tokenName, token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         maxAge: AUTH_CONFIG.tokenExpiry,
@@ -44,7 +44,7 @@ export async function login(username: string, password: string) {
 }
 
 export async function logout() {
-  cookies().delete(AUTH_CONFIG.tokenName)
+  (await cookies()).delete(AUTH_CONFIG.tokenName)
 }
 
 export async function getAuthToken() {

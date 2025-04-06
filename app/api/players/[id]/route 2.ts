@@ -2,8 +2,7 @@ import { type NextRequest, NextResponse } from "next/server"
 import { isAuthenticated } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
 
-export async function GET(request: NextRequest, props: { params: Promise<{ id: string }> }) {
-  const params = await props.params;
+export async function GET(request: NextRequest, { params }: { params: { id: string } }) {
   try {
     const id = Number.parseInt(params.id)
     const player = await prisma.player.findUnique({
@@ -21,8 +20,7 @@ export async function GET(request: NextRequest, props: { params: Promise<{ id: s
   }
 }
 
-export async function PUT(request: NextRequest, props: { params: Promise<{ id: string }> }) {
-  const params = await props.params;
+export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
   // Check authentication
   if (!isAuthenticated()) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
@@ -65,8 +63,7 @@ export async function PUT(request: NextRequest, props: { params: Promise<{ id: s
   }
 }
 
-export async function DELETE(request: NextRequest, props: { params: Promise<{ id: string }> }) {
-  const params = await props.params;
+export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
   // Check authentication
   if (!isAuthenticated()) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })

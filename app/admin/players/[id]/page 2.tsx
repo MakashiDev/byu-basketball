@@ -5,9 +5,9 @@ import { prisma } from "@/lib/prisma"
 
 
 
-export default async function EditPlayerPage(props: { params: Promise<{ id: string }> }) {
-  const params = await props.params;
-  console.log(params.id)
+export default async function EditPlayerPage({ params }: { params: { id: string } }) {
+  await params;
+  console.log(await params.id)
   const playerId = Number.parseInt(params.id)
   const player = await prisma.player.findUnique(
     {

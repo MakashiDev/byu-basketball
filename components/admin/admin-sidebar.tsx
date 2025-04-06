@@ -32,6 +32,12 @@ export function AdminSidebar() {
       icon: UserPlus,
     },
     {
+      name: "Tools",
+      href: "/admin/tools",
+      icon: Settings,
+      active: pathname.includes("/admin/tools"),
+    },
+    {
       name: "Statistics",
       href: "/admin/stats",
       icon: BarChart3,
