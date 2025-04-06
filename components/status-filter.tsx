@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils"
 
 interface StatusFilterProps {
-  status: "all" | "committed" | "transfer" | "unconfirmed" | "likely_returning"
+  status: "all" | "committed" | "transfer" | "unconfirmed" 
   count: number
   selected: boolean
   onClick: () => void
