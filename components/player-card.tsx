@@ -13,6 +13,7 @@ export function PlayerCard({ player }: PlayerCardProps) {
     "transfer": "bg-amber-600 hover:bg-amber-600",
     "unconfirmed": "bg-gray-600 hover:bg-gray-600",
     "likely_returning": "bg-blue-600 hover:bg-blue-600",
+    graduated: "bg-blue-600 hover:bg-blue-600",
   }
 
   const statusLabels = {
@@ -20,6 +21,7 @@ export function PlayerCard({ player }: PlayerCardProps) {
     transfer: "Transfer Portal",
     unconfirmed: "Unconfirmed",
     likely_returning: "Likely Returning",
+    graduated: "Graduated",
   }
 
   return (
