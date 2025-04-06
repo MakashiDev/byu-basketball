@@ -33,7 +33,7 @@ export function PlayerCard({ player }: PlayerCardProps) {
         </div>
         <div className="absolute top-0 left-0 z-20 p-2">
           <div className="bg-[#002E5D] dark:bg-[#001a33] text-white font-bold rounded-full w-8 h-8 flex items-center justify-center">
-            {player.jerseyNumber}
+            {player.jerseyNumber || "?"}
           </div>
         </div>
         <Image

@@ -105,7 +105,9 @@ export function PlayerTable({ players }: PlayerTableProps) {
                     <div className="text-sm text-gray-500">{player.hometown}</div>
                   </TableCell>
                   <TableCell>{player.position || "N/A"}</TableCell>
-                  <TableCell>{player.year}</TableCell>
+                  <TableCell>{
+                      player.year || "TBD"
+                    }</TableCell>
                   <TableCell>
                     <Badge className={statusColors[player.status]}>{statusLabels[player.status]}</Badge>
                   </TableCell>

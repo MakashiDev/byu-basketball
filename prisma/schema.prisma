@@ -12,7 +12,7 @@ datasource db {
 
 model Player {
   id                   Int     @id @default(autoincrement())
-  jerseyNumber         Int
+  jerseyNumber         String
   name                 String
   position             String?
   height               String

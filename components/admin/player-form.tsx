@@ -103,11 +103,8 @@ export function PlayerForm({ player }: PlayerFormProps) {
                 id="jerseyNumber"
                 name="jerseyNumber"
                 type="number"
-                min={0}
-                max={99}
                 value={formData.jerseyNumber || ""}
                 onChange={handleNumberChange}
-                required
               />
             </div>
 
@@ -141,7 +138,9 @@ export function PlayerForm({ player }: PlayerFormProps) {
                   <SelectItem value="Sophomore">Sophomore</SelectItem>
                   <SelectItem value="Junior">Junior</SelectItem>
                   <SelectItem value="Senior">Senior</SelectItem>
+                  <SelectItem value="RS-Junior">RS-Freshman</SelectItem>
                   <SelectItem value="RS-Junior">RS-Junior</SelectItem>
+                  <SelectItem value="RS-Junior">RS-Sophomore</SelectItem>
                   <SelectItem value="RS-Senior">RS-Senior</SelectItem>
                   <SelectItem value="Graduate">Graduate</SelectItem>
                 </SelectContent>
