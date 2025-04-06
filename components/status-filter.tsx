@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils"
 
 interface StatusFilterProps {
-  status: "all" | "committed" | "transfer" | "unconfirmed"
+  status: "all" | "committed" | "transfer" | "unconfirmed" | "likely_returning"
   count: number
   selected: boolean
   onClick: () => void
@@ -15,6 +15,7 @@ export function StatusFilter({ status, count, selected, onClick }: StatusFilterP
     committed: "bg-green-600 text-white hover:bg-green-700",
     transfer: "bg-amber-600 text-white hover:bg-amber-700",
     unconfirmed: "bg-gray-600 text-white hover:bg-gray-700",
+    likely_returning: "bg-blue-600 text-white hover:bg-blue-700",
   }
 
   const statusLabels = {
@@ -22,6 +23,7 @@ export function StatusFilter({ status, count, selected, onClick }: StatusFilterP
     committed: "Committed",
     transfer: "Transfer Portal",
     unconfirmed: "Unconfirmed",
+    likely_returning: "Likely Returning",
   }
 
   return (

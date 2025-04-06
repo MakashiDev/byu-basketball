@@ -50,9 +50,9 @@ export function AdminSidebar() {
   ]
 
   return (
-    <aside className="hidden md:block w-64 bg-white border-r min-h-[calc(100vh-4rem)]">
+    <aside className="hidden md:block w-64 bg-white dark:bg-[#000102] border-r dark:border-gray-700 min-h-[calc(100vh-4rem)]">
       <div className="p-4">
-        <h2 className="text-lg font-semibold text-[#002E5D] mb-6">Admin Panel</h2>
+        <h2 className="text-lg font-semibold text-[#002E5D] dark:text-blue-400 mb-6">Admin Panel</h2>
         <nav className="space-y-1">
           {links.map((link) => (
             <Link
@@ -61,8 +61,8 @@ export function AdminSidebar() {
               className={cn(
                 "flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors",
                 pathname === link.href || link.active
-                  ? "bg-[#002E5D]/10 text-[#002E5D] font-medium"
-                  : "text-gray-600 hover:bg-gray-100",
+                  ? "bg-[#002E5D]/10 dark:bg-blue-900/30 text-[#002E5D] dark:text-blue-400 font-medium"
+                  : "text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700/50",
               )}
             >
               <link.icon className="h-5 w-5" />

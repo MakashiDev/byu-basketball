@@ -64,7 +64,7 @@ export function TeamStats({ statusCounts }: TeamStatsProps) {
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
               <HelpCircle className="h-5 w-5 text-gray-600 dark:text-gray-400" />
-              <h3 className="font-medium">Undecided</h3>
+              <h3 className="font-medium">Unconfirmed</h3>
             </div>
             <span className="text-lg font-bold text-gray-600 dark:text-gray-400">{statusCounts.undecided}</span>
           </div>

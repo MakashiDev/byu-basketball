@@ -24,7 +24,7 @@ export function AdminHeader() {
   }
 
   return (
-    <header className="bg-[#002E5D] text-white shadow-md">
+    <header className="bg-[#002E5D] dark:bg-[#001a33] text-white shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -35,13 +35,13 @@ export function AdminHeader() {
           </div>
 
           <div className="hidden md:flex items-center gap-6">
-            <Link href="/admin/dashboard" className="hover:text-white/80">
+            <Link href="/admin/dashboard" className="hover:text-white/80 dark:text-blue-400 dark:hover:text-blue-300">
               Dashboard
             </Link>
-            <Link href="/admin/players/new" className="hover:text-white/80">
+            <Link href="/admin/players/new" className="hover:text-white/80 dark:text-blue-400 dark:hover:text-blue-300">
               Add Player
             </Link>
-            <Link href="/" className="hover:text-white/80" target="_blank">
+            <Link href="/" className="hover:text-white/80 dark:text-blue-400 dark:hover:text-blue-300" target="_blank">
               View Site
             </Link>
             <Button variant="ghost" size="sm" onClick={handleLogout} className="gap-2">
@@ -58,15 +58,15 @@ export function AdminHeader() {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden py-3 border-t border-white/10">
+          <div className="md:hidden py-3 border-t border-white/10 dark:border-gray-700">
             <div className="flex flex-col space-y-3">
-              <Link href="/admin/dashboard" className="px-2 py-1 hover:bg-white/10 rounded">
+              <Link href="/admin/dashboard" className="px-2 py-1 hover:bg-white/10 dark:hover:bg-blue-900/30 rounded">
                 Dashboard
               </Link>
-              <Link href="/admin/players/new" className="px-2 py-1 hover:bg-white/10 rounded">
+              <Link href="/admin/players/new" className="px-2 py-1 hover:bg-white/10 dark:hover:bg-blue-900/30 rounded">
                 Add Player
               </Link>
-              <Link href="/" className="px-2 py-1 hover:bg-white/10 rounded" target="_blank">
+              <Link href="/" className="px-2 py-1 hover:bg-white/10 dark:hover:bg-blue-900/30 rounded" target="_blank">
                 View Site
               </Link>
               <Button variant="ghost" size="sm" onClick={handleLogout} className="justify-start gap-2">

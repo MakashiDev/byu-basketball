@@ -19,7 +19,7 @@ model Player {
   year                 String
   hometown             String
   highSchoolOrPrevTeam String
-  status               String  // "committed" | "transfer" | "unconfirmed" | "graduated" | "transferred" | "nba_draft"
+  status               String  // "committed" | "transfer" | "unconfirmed" | "graduated" | "transferred" | "nba_draft" | "likely_returning"
   formerPlayer         Boolean @default(false)
   stats                String?
   image                String?

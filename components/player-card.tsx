@@ -1,7 +1,7 @@
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import type { Player } from "@/data/players"
+import type { Player } from "@prisma/client"
 
 interface PlayerCardProps {
   player: Player
@@ -9,15 +9,17 @@ interface PlayerCardProps {
 
 export function PlayerCard({ player }: PlayerCardProps) {
   const statusColors = {
-    committed: "bg-green-600 hover:bg-green-600",
-    transfer: "bg-amber-600 hover:bg-amber-600",
-    unconfirmed: "bg-gray-600 hover:bg-gray-600",
+    "committed": "bg-green-600 hover:bg-green-600",
+    "transfer": "bg-amber-600 hover:bg-amber-600",
+    "unconfirmed": "bg-gray-600 hover:bg-gray-600",
+    "likely_returning": "bg-blue-600 hover:bg-blue-600",
   }
 
   const statusLabels = {
     committed: "Committed",
     transfer: "Transfer Portal",
     unconfirmed: "Unconfirmed",
+    likely_returning: "Likely Returning",
   }
 
   return (
@@ -25,8 +27,8 @@ export function PlayerCard({ player }: PlayerCardProps) {
       <div className="relative h-72 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-t from-[#002E5D] dark:from-[#001a33] to-transparent z-10 opacity-70"></div>
         <div className="absolute top-0 right-0 z-20 p-2">
-          <Badge className={`${statusColors[player.status]} text-white font-medium px-3 py-1`}>
-            {statusLabels[player.status]}
+          <Badge className={`${statusColors[player.status as keyof typeof statusColors]} text-white font-medium px-3 py-1`}>
+            {statusLabels[player.status as keyof typeof statusLabels]}
           </Badge>
         </div>
         <div className="absolute top-0 left-0 z-20 p-2">

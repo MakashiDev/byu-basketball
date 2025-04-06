@@ -8,7 +8,7 @@ import { StatusFilter } from "@/components/status-filter"
 import { TeamStats } from "@/components/team-stats"
 import type { Player } from "@prisma/client"
 
-type PlayerStatus = "committed" | "transfer" | "unconfirmed"
+type PlayerStatus = "committed" | "transfer" | "unconfirmed" | "likely_returning"
 
 interface PlayerStatusDashboardProps {
   players: Player[]
@@ -37,6 +37,7 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
     committed: currentPlayers.filter((p) => p.status === "committed").length,
     transfer: currentPlayers.filter((p) => p.status === "transfer").length,
     undecided: currentPlayers.filter((p) => p.status === "unconfirmed").length,
+    likely_returning: currentPlayers.filter((p) => p.status === "likely_returning").length,
     graduated: graduatedPlayers.length
   }
 
@@ -141,6 +142,12 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
                 count={statusCounts.undecided}
                 selected={selectedStatus === "unconfirmed"}
                 onClick={() => setSelectedStatus("unconfirmed")}
+              />
+              <StatusFilter
+                status="likely_returning"
+                count={statusCounts.likely_returning}
+                selected={selectedStatus === "likely_returning"}
+                onClick={() => setSelectedStatus("likely_returning")}
               />
             </div>
           </div>

@@ -23,7 +23,9 @@ export default async function DashboardPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-[#002E5D]">Admin Dashboard</h1>
+        <h1 className="text-3xl font-bold text-[#002E5D] 
+        dark:text-[#0817b9]
+        ">Admin Dashboard</h1>
         <p className="text-gray-500">Manage BYU Basketball roster and player statuses</p>
       </div>
 

@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Users, UserCheck, UserX, HelpCircle } from "lucide-react"
-import type { Player } from "@prisma/client"
+import { Player } from "@prisma/client"
 
 interface DashboardStatsProps {
   players: Player[]

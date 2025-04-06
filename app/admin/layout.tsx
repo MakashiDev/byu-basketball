@@ -13,7 +13,7 @@ export default async function AdminLayout({
   
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-100 dark:bg-[#000102]">
       <AdminHeader />
       <div className="flex">
         <AdminSidebar />
@@ -21,7 +21,7 @@ export default async function AdminLayout({
           <div className="max-w-7xl mx-auto">{children}</div>
         </main>
       </div>
-      <div className="p-4 text-center text-sm text-gray-500 border-t">
+      <div className="p-4 text-center text-sm text-gray-500 dark:text-gray-400 border-t dark:border-gray-800">
         <p>This is an unofficial fan page, not affiliated with or endorsed by BYU Athletics.</p>
       </div>
     </div>
