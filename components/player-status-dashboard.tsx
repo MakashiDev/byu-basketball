@@ -28,7 +28,7 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
   }, [])
 
   const currentPlayers = players.filter(p => !['graduated', 'transferred', 'nba_draft'].includes(p.status))
-  const graduatedPlayers = players.filter(p => p.status === 'graduated')
+  const graduatedPlayers =  players.filter(p => p.status === 'graduated')
 
   const filteredPlayers =
     selectedStatus === "all" ? currentPlayers : currentPlayers.filter((player) => player.status === selectedStatus)

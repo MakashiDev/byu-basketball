@@ -92,14 +92,14 @@ export function PlayerCard({ player }: PlayerCardProps) {
           </div>
           <p className="text-sm font-medium flex flex-wrap gap-2">
   {!player.stats?.includes(',') ? (
-    <span className="text-[#002E5D] dark:text-blue-400">{player.stats}</span>
+    <span className="text-blue-600 font-semibold dark:text-blue-400">{player.stats}</span>
   ) : (
     player.stats?.split(', ').map((stat, index) => {
       const match = stat.match(/^([\d.]+)\s*(.*)$/); // Match number + stat
       return (
         <span key={index}>
-          <span className="text-[#002E5D] dark:text-blue-400 font-bold">{match?.[1]}</span>{' '}
-          <span className="text-gray-300">{match?.[2]}</span>
+          <span className="text-blue-600 dark:text-blue-400 font-bold">{match?.[1]}</span>{' '}
+          <span className="dark:text-gray-300 text-gray-500">{match?.[2]}</span>
         </span>
       );
     })
