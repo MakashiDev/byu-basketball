@@ -1,5 +1,7 @@
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
+import bcrypt from "bcrypt"
+import jwt from "jsonwebtoken"
 
 // Environment variables for authentication
 // These should be set in .env.local file or through environment variables in production
@@ -12,7 +14,8 @@ const ADMIN_CREDENTIALS = {
 const AUTH_CONFIG = {
   tokenName: process.env.AUTH_TOKEN_NAME || "auth-token",
   tokenExpiry: parseInt(process.env.AUTH_TOKEN_EXPIRY || "86400", 10), // Default: 24 hours in seconds
-  secret: process.env.AUTH_SECRET || "fallback-secret-key-please-set-in-env-vars"
+  secret: process.env.AUTH_SECRET || "fallback-secret-key-please-set-in-env-vars",
+  saltRounds : parseInt(process.env.AUTH_SALT_ROUNDS || "10", 10),
 }
 
 export async function login(username: string, password: string) {
@@ -74,63 +77,34 @@ export async function requireAuth() {
   }
 }
 
-// Password hashing function using Web Crypto API
-async function hashPassword(password: string): Promise<string> {
-  const encoder = new TextEncoder()
-  const data = encoder.encode(password)
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data)
-  const hashArray = Array.from(new Uint8Array(hashBuffer))
-  const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("")
-  return hashHex
+
+export async function hashPassword(password: string): Promise<string> {
+  const hash = await bcrypt.hash(password, AUTH_CONFIG.saltRounds)
+  return hash
 }
 
-// Generate a session token
-async function generateSessionToken(username: string): Promise<string> {
-  // In a production app, you would use a proper JWT library
-  // This is a simplified version that creates a token with username and timestamp
-  const timestamp = Date.now()
-  const tokenData = `${username}:${timestamp}`
-  
-  // Sign the token data with the secret key
-  const encoder = new TextEncoder()
-  const data = encoder.encode(tokenData + AUTH_CONFIG.secret)
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data)
-  const hashArray = Array.from(new Uint8Array(hashBuffer))
-  const signature = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("")
-  
-  // Return the token in the format: base64(username:timestamp):signature
-  const tokenPayload = Buffer.from(tokenData).toString('base64')
-  return `${tokenPayload}:${signature}`
+export function generateSessionToken(username: string): string {
+  const payload = {
+    username,
+    iat: Math.floor(Date.now() / 1000) // issued at (optional, added by default)
+  }
+
+  const token = jwt.sign(payload, AUTH_CONFIG.secret, {
+    expiresIn: "7d" // token valid for 7 days
+  })
+
+  return token
 }
+
 
 // Validate a session token
-function validateSessionToken(token: string): boolean {
+export function validateSessionToken(token: string): boolean {
   try {
-    // Split the token into payload and signature
-    const [payloadBase64, signature] = token.split(":")
-    
-    if (!payloadBase64 || !signature) {
-      return false
-    }
-    
-    // Decode the payload
-    const tokenData = Buffer.from(payloadBase64, 'base64').toString()
-    const [username, timestampStr] = tokenData.split(":")
-    const timestamp = parseInt(timestampStr, 10)
-    
-    // Check if the token has expired
-    const now = Date.now()
-    const expiryTime = timestamp + (AUTH_CONFIG.tokenExpiry * 1000)
-    
-    if (now > expiryTime) {
-      return false
-    }
-    
-    // In a production app, you would verify the signature
-    // For simplicity, we're just checking if the token has the expected format
-    return !!username && !!timestamp && !!signature
-  } catch (error) {
-    console.error("Token validation error:", error)
+    // Will throw if token is invalid or expired
+    jwt.verify(token, AUTH_CONFIG.secret)
+    return true
+  } catch (err) {
+    console.error("Invalid or expired token:", err)
     return false
   }
 }
