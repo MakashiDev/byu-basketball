@@ -2,6 +2,7 @@ import { PlayerStatusDashboard } from "@/components/player-status-dashboard"
 import { SiteHeader } from "@/components/site-header"
 import { prisma } from "@/lib/prisma"
 
+export const dynamic = "force-dynamic"
 
 export default async function Home() {
   const players = await prisma.player.findMany()
