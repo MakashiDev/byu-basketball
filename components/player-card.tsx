@@ -79,15 +79,15 @@ export function PlayerCard({ player }: PlayerCardProps) {
 
             {
               player.id === 19 ? (
-                <Image src="https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/washington.sidearmsports.com/images/integration_2024/logo_main.svg" alt="University Of Washington" width={20} height={20} className="opacity-50" />
+                <Image src="https://dxbhsrqyrr690.cloudfront.net/sidearm.nextgen.sites/washington.sidearmsports.com/images/integration_2024/logo_main.svg" alt="University Of Washington" width={20} height={20} />
               ) :
               player.id === 20 ? (
-                <Image src="https://images.squarespace-cdn.com/content/v1/6696d414adc7aa4a82851e22/c26063c2-17ce-42a7-89db-2448f1eb0934/UP_Website.png" alt="Utah Prep Logo" width={20} height={20} className="opacity-50" />
+                <Image src="https://images.squarespace-cdn.com/content/v1/6696d414adc7aa4a82851e22/c26063c2-17ce-42a7-89db-2448f1eb0934/UP_Website.png" alt="Utah Prep Logo" width={20} height={20}  />
               ) :
               player.id === 18 ? (
-                <Image src="https://images.squarespace-cdn.com/content/v1/6696d414adc7aa4a82851e22/c26063c2-17ce-42a7-89db-2448f1eb0934/UP_Website.png" alt="Utah Prep Logo" width={20} height={20} className="opacity-50" />
+                <Image src="https://images.squarespace-cdn.com/content/v1/6696d414adc7aa4a82851e22/c26063c2-17ce-42a7-89db-2448f1eb0934/UP_Website.png" alt="Utah Prep Logo" width={20} height={20}  />
               ) :  (
-                <Image src="/images/byu-logo.png" alt="BYU Logo" width={20} height={20} className="opacity-50" />
+                <Image src="/images/byu-logo.png" alt="BYU Logo" width={20} height={20}  />
               )
               
             }
