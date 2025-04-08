@@ -100,7 +100,7 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
       </div>
 
         {/* Team Stats Section */}
-      <div className="dark:bg-[#002E5D]/10 bg-muted py-8 border-b border-border">
+      <div className="dark:bg-[#002E5D]/10 bg-muted py-8 border-b border-border max-sm:hidden">
         <div className="container mx-auto px-4">
           <TeamStats statusCounts={statusCounts} />
         </div>
