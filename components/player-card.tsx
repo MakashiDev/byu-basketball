@@ -44,7 +44,7 @@ export function PlayerCard({ player }: PlayerCardProps) {
           src={player.image || `/placeholder.svg?height=288&width=288&text=${player.jerseyNumber}`}
           alt={player.name}
           fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute bottom-0 left-0 right-0 p-3 z-20">
           <h3 className="font-bold text-xl text-white drop-shadow-md">{player.name}</h3>
