@@ -20,26 +20,32 @@ const AUTH_CONFIG = {
 
 export async function login(username: string, password: string) {
   try {
-    const passwordHash = await hashPassword(password)
-    console.log(passwordHash)
-
-    if (username === ADMIN_CREDENTIALS.username && passwordHash === ADMIN_CREDENTIALS.passwordHash) {
-      // Generate a session token
-      const token = await generateSessionToken(username)
-      
-      // Set a secure HTTP-only cookie with the session token
-      await (await cookies()).set(AUTH_CONFIG.tokenName, token, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-        maxAge: AUTH_CONFIG.tokenExpiry,
-        path: "/",
-        sameSite: "lax", // Provides CSRF protection
-      })
-      
-      return { success: true }
+    // Check username first
+    if (username !== ADMIN_CREDENTIALS.username) {
+      return { success: false, error: "Invalid credentials" }
     }
 
-    return { success: false, error: "Invalid credentials" }
+    // Compare the entered password with the stored hash
+    const isMatch = await bcrypt.compare(password, ADMIN_CREDENTIALS.passwordHash)
+
+    if (!isMatch) {
+      return { success: false, error: "Invalid credentials" }
+    }
+
+    // Generate a session token
+    const token = await generateSessionToken(username)
+
+    // Set a secure HTTP-only cookie with the session token
+    await (await cookies()).set(AUTH_CONFIG.tokenName, token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      maxAge: AUTH_CONFIG.tokenExpiry,
+      path: "/",
+      sameSite: "lax", // Provides CSRF protection
+    })
+
+    return { success: true }
+
   } catch (error) {
     console.error("Login error:", error)
     return { success: false, error: "Authentication failed" }
