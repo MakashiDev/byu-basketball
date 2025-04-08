@@ -50,12 +50,12 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 p-4">
       <div className="w-full max-w-md">
         <div className="flex justify-center mb-6">
           <div className="flex items-center gap-3">
             <Image src="/images/byu-logo.png" alt="BYU Logo" width={50} height={50} />
-            <h1 className="text-2xl font-bold text-[#002E5D]">BYU Basketball Admin</h1>
+            <h1 className="text-2xl font-bold text-[#002E5D] dark:text-white">BYU Basketball Admin</h1>
           </div>
         </div>
 
@@ -102,7 +102,7 @@ export default function LoginPage() {
             </form>
           </CardContent>
           <CardFooter className="flex justify-center">
-            <p className="text-sm text-gray-500">This is an unofficial fan page, not affiliated with BYU Athletics</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">This is an unofficial fan page, not affiliated with BYU Athletics</p>
           </CardFooter>
         </Card>
       </div>

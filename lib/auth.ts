@@ -1,7 +1,7 @@
 import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import bcrypt from "bcryptjs"
-import jwt from "jsonwebtoken"
+import * as jose from 'jose'
 
 // Environment variables for authentication
 // These should be set in .env.local file or through environment variables in production
@@ -22,15 +22,25 @@ export async function login(username: string, password: string) {
   try {
     // Check username first
     if (username !== ADMIN_CREDENTIALS.username) {
+      console.log("Invalid username")
       return { success: false, error: "Invalid credentials" }
     }
 
     // Compare the entered password with the stored hash
+
     const isMatch = await bcrypt.compare(password, ADMIN_CREDENTIALS.passwordHash)
 
     if (!isMatch) {
+      console.log("Invalid password")
+      console.log(password, ADMIN_CREDENTIALS.passwordHash)
+      console.log(isMatch)
+      console.log(await hashPassword(password))
+      console.log("HASH LENGTH:", process.env.ADMIN_PASSWORD_HASH?.length)
+      console.log("HASH:", process.env.ADMIN_PASSWORD_HASH)
+
       return { success: false, error: "Invalid credentials" }
     }
+    console.log("Valid credentials")
 
     // Generate a session token
     const token = await generateSessionToken(username)
@@ -90,28 +100,35 @@ export async function hashPassword(password: string): Promise<string> {
   return hash
 }
 
-export function generateSessionToken(username: string): string {
-  const payload = {
-    username,
-    iat: Math.floor(Date.now() / 1000) // issued at (optional, added by default)
+
+
+export async function generateSessionToken(username: string): Promise<string> {
+  try {
+    const secret = new TextEncoder().encode(AUTH_CONFIG.secret)
+    const payload = {
+      username,
+      iat: Math.floor(Date.now() / 1000)
+    }
+
+    const token = await new jose.SignJWT(payload)
+      .setProtectedHeader({ alg: 'HS256' }) // Add this line to set the algorithm
+      .setExpirationTime('7d')
+      .sign(secret)
+
+    return token
+  } catch (error) {
+    console.error('Failed to generate token:', error)
+    throw error
   }
-
-  const token = jwt.sign(payload, AUTH_CONFIG.secret, {
-    expiresIn: "7d" // token valid for 7 days
-  })
-
-  return token
 }
 
-
-// Validate a session token
-export function validateSessionToken(token: string): boolean {
+export async function validateSessionToken(token: string): Promise<boolean> {
   try {
-    // Will throw if token is invalid or expired
-    jwt.verify(token, AUTH_CONFIG.secret)
+    const secret = new TextEncoder().encode(AUTH_CONFIG.secret)
+    await jose.jwtVerify(token, secret)
     return true
   } catch (err) {
-    console.error("Invalid or expired token:", err)
+    console.error("Token validation error:", err)
     return false
   }
 }
