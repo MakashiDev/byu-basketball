@@ -3,23 +3,36 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { PlayerTable } from "@/components/admin/player-table"
 import { DashboardStats } from "@/components/admin/dashboard-stats"
 import { prisma } from "@/lib/prisma"
+export const revalidate = 0
+export const dynamic = "force-dynamic"
 
+// Fetch function for active players
+async function fetchActivePlayers() {
+  return await prisma.player.findMany({
+    where: {
+      formerPlayer: false,
+      status: {
+        not: "graduated"
+      }
+    }
+  })
+}
+
+// Fetch function for graduated players
+async function fetchGraduatedPlayers() {
+  return await prisma.player.findMany({
+    where: {
+      status: "graduated"
+    }
+  })
+}
+
+// Main page component
 export default async function DashboardPage() {
-  const [players, graduates] = await Promise.all([
-    prisma.player.findMany({
-      where: {
-        formerPlayer: false,
-        status: {
-          not: "graduated"
-        }
-      }
-    }),
-    prisma.player.findMany({
-      where: {
-        status: "graduated"
-      }
-    })
-  ])
+  // Fetch data sequentially
+  const players = await fetchActivePlayers() // Fetch active players
+  const graduates = await fetchGraduatedPlayers() // Fetch graduated player
+
   return (
     <div className="space-y-6">
       <div>
@@ -57,7 +70,7 @@ export default async function DashboardPage() {
               <CardDescription>Players committed to BYU for the upcoming season</CardDescription>
             </CardHeader>
             <CardContent>
-              <PlayerTable players={(await players).filter((p) => p.status === "committed")} />
+              <PlayerTable players={players.filter((p) => p.status === "committed")} />
             </CardContent>
           </Card>
         </TabsContent>
@@ -68,7 +81,7 @@ export default async function DashboardPage() {
               <CardDescription>Players in the transfer portal</CardDescription>
             </CardHeader>
             <CardContent>
-              <PlayerTable players={(await players).filter((p) => p.status === "transfer")} />
+              <PlayerTable players={players.filter((p) => p.status === "transfer")} />
             </CardContent>
           </Card>
         </TabsContent>
@@ -79,7 +92,7 @@ export default async function DashboardPage() {
               <CardDescription>Players with undecided status</CardDescription>
             </CardHeader>
             <CardContent>
-              <PlayerTable players={(await players).filter((p) => p.status === "undecided")} />
+              <PlayerTable players={players.filter((p) => p.status === "undecided")} />
             </CardContent>
           </Card>
         </TabsContent>
@@ -98,4 +111,3 @@ export default async function DashboardPage() {
     </div>
   )
 }
-
