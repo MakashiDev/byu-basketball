@@ -30,7 +30,7 @@ export function ExitStats({ statusCounts }: ExitStatsProps) {
             height={40}
           />
           <h2 className="text-xl font-bold text-[#002E5D] dark:text-blue-400">
-            2025-26 Roster Breakdown
+            Exiting Players Breakdown
           </h2>
         </div>
       </div>
