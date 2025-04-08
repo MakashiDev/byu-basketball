@@ -184,7 +184,7 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
           {/* Roster Sub-tabs */}
           <Tabs defaultValue="all" className="mt-6">
             <TabsList className="mb-6">
-              <TabsTrigger value="all">All Players ({currentPlayers.length})</TabsTrigger>
+              <TabsTrigger value="all">All ({currentPlayers.length})</TabsTrigger>
               <TabsTrigger value="returning">Returning ({returningPlayers.length})</TabsTrigger>
               <TabsTrigger value="committed">Committed ({committedPlayers.length})</TabsTrigger>
               <TabsTrigger value="unconfirmed">Unconfirmed ({unconfirmedPlayers.length})</TabsTrigger>
@@ -247,10 +247,10 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
           {/* Exiting Sub-tabs */}
           <Tabs defaultValue="all" className="mt-6">
             <TabsList className="mb-6">
-              <TabsTrigger value="all">All Players ({exitingPlayers.length})</TabsTrigger>
+              <TabsTrigger value="all">All ({exitingPlayers.length})</TabsTrigger>
               <TabsTrigger value="nbaDraft">NBA Draft ({nbaDraftPlayers.length})</TabsTrigger>
               <TabsTrigger value="graduated">Graduated ({graduatedPlayers.length})</TabsTrigger>
-              <TabsTrigger value="transferred">Transfer Portal ({transferredPlayers.length})</TabsTrigger>
+              <TabsTrigger value="transferred">Transfering ({transferredPlayers.length})</TabsTrigger>
             </TabsList>
 
             <TabsContent value="all">
