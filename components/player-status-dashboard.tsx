@@ -293,12 +293,12 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
       <div className="bg-[#002E5D]/5 dark:bg-[#002E5D]/10 py-12 my-8">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/3 relative h-[300px] md:h-[400px]">
+            <div className="md:w-1/3 relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl">
               <Image
                 src="/images/cosmo.png"
                 alt="Cosmo the Cougar"
                 fill
-                className="object-contain object-center"
+                className="object-cover object-center"
               />
             </div>
             <div className="md:w-2/3">
