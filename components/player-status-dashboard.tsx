@@ -250,7 +250,7 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
               <TabsTrigger value="all">All ({exitingPlayers.length})</TabsTrigger>
               <TabsTrigger value="nbaDraft">NBA Draft ({nbaDraftPlayers.length})</TabsTrigger>
               <TabsTrigger value="graduated">Graduated ({graduatedPlayers.length})</TabsTrigger>
-              <TabsTrigger value="transferred">Transfering ({transferredPlayers.length})</TabsTrigger>
+              <TabsTrigger value="transferred">Transferring ({transferredPlayers.length})</TabsTrigger>
             </TabsList>
 
             <TabsContent value="all">
