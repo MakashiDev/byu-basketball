@@ -74,7 +74,7 @@ export function PlayerCard({ player }: PlayerCardProps) {
       <CardFooter className="bg-muted px-4 py-3 border-t border-border">
         <div className="w-full">
           <div className="flex items-center justify-between">
-            <p className="text-xs text-muted-foreground">Season Stats</p>
+            <p className="text-xs text-muted-foreground">Last Season</p>
             
 
             {
