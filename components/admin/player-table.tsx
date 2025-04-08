@@ -37,15 +37,21 @@ export function PlayerTable({ players }: PlayerTableProps) {
   const [playerToDelete, setPlayerToDelete] = useState<Player | null>(null)
 
   const statusColors = {
-    committed: "bg-green-100 text-green-800 hover:bg-green-100",
-    transfer: "bg-amber-100 text-amber-800 hover:bg-amber-100",
-    undecided: "bg-gray-100 text-gray-800 hover:bg-gray-100",
+    committed: "bg-green-600 hover:bg-green-600",
+    transfer: "bg-amber-600 hover:bg-amber-600",
+    unconfirmed: "bg-gray-600 hover:bg-gray-600",
+    returning: "bg-purple-600 hover:bg-purple-600",
+    graduated: "bg-blue-600 hover:bg-blue-600",
+    nbaDraft: "bg-red-600 hover:bg-red-600",
   }
 
   const statusLabels = {
     committed: "Committed",
     transfer: "Transfer Portal",
-    undecided: "Undecided",
+    unconfirmed: "Unconfirmed",
+    returning: "Returning",
+    graduated: "Graduated",
+    nbaDraft: "NBA Draft",
   }
 
   function handleDeleteClick(player: Player) {

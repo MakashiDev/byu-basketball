@@ -151,7 +151,7 @@ export function PlayerForm({ player }: PlayerFormProps) {
               <Label htmlFor="status">Status</Label>
               <Select
                 name="status"
-                value={formData.status || "undecided"}
+                value={formData.status || "unconfirmed"}
                 onValueChange={(value) => handleSelectChange("status", value as Player["status"])}
               >
                 <SelectTrigger>
@@ -160,11 +160,11 @@ export function PlayerForm({ player }: PlayerFormProps) {
                 <SelectContent>
                   <SelectItem value="committed">Committed</SelectItem>
                   <SelectItem value="transfer">Transfer Portal</SelectItem>
-                  <SelectItem value="undecided">Undecided</SelectItem>
+                  <SelectItem value="unconfirmed">Unconfirmed</SelectItem>
                   <SelectItem value="graduated">Graduated</SelectItem>
                   <SelectItem value="transferred">Transferred</SelectItem>
                   <SelectItem value="nbaDraft">NBA Draft</SelectItem>
-                  <SelectItem value="likely_returning">Likely Returning</SelectItem>
+                  <SelectItem value="returning">Likely Returning</SelectItem>
                 </SelectContent>
               </Select>
             </div>
