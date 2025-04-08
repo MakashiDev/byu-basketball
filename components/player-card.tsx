@@ -9,19 +9,21 @@ interface PlayerCardProps {
 
 export function PlayerCard({ player }: PlayerCardProps) {
   const statusColors = {
-    "committed": "bg-green-600 hover:bg-green-600",
-    "transfer": "bg-amber-600 hover:bg-amber-600",
-    "unconfirmed": "bg-gray-600 hover:bg-gray-600",
-    "likely_returning": "bg-blue-600 hover:bg-blue-600",
+    committed: "bg-green-600 hover:bg-green-600",
+    transfer: "bg-amber-600 hover:bg-amber-600",
+    unconfirmed: "bg-gray-600 hover:bg-gray-600",
+    returning: "bg-purple-600 hover:bg-purple-600",
     graduated: "bg-blue-600 hover:bg-blue-600",
+    nbaDraft: "bg-red-600 hover:bg-red-600",
   }
 
   const statusLabels = {
     committed: "Committed",
     transfer: "Transfer Portal",
     unconfirmed: "Unconfirmed",
-    likely_returning: "Likely Returning",
+    returning: "Returning",
     graduated: "Graduated",
+    nbaDraft: "NBA Draft",
   }
 
   return (

@@ -8,9 +8,12 @@ export default async function Home() {
   const players = await prisma.player.findMany()
 
   const order = {
-    committed: 0,
-    unconfirmed: 1,
-    transfer: 2
+    returning: 0,
+    committed: 1,
+    unconfirmed: 2,
+    nbaDraft: 3,
+    graduated: 4,
+    transfer: 5
   };
 
   const sortedPlayers = players.sort((a, b) => {

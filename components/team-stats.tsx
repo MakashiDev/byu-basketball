@@ -4,17 +4,17 @@ import Image from "next/image"
 interface TeamStatsProps {
   statusCounts: {
     committed: number
-    transfer: number
     undecided: number
+    returning: number
   }
 }
 
 export function TeamStats({ statusCounts }: TeamStatsProps) {
-  const totalPlayers = statusCounts.committed + statusCounts.transfer + statusCounts.undecided
+  const totalPlayers = statusCounts.committed +  statusCounts.undecided + statusCounts.returning
 
   const committedPercentage = Math.round((statusCounts.committed / totalPlayers) * 100) || 0
-  const transferPercentage = Math.round((statusCounts.transfer / totalPlayers) * 100) || 0
   const undecidedPercentage = Math.round((statusCounts.undecided / totalPlayers) * 100) || 0
+  const returningPercentage = Math.round((statusCounts.returning / totalPlayers) * 100) || 0
 
   return (
     <div className="relative">
@@ -32,6 +32,22 @@ export function TeamStats({ statusCounts }: TeamStatsProps) {
           <p className="text-muted-foreground">Total Players</p>
         </div>
 
+       
+
+        <div className="bg-card rounded-lg shadow-md p-6">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2">
+              <UserX className="h-5 w-5 text-purple-600" />
+              <h3 className="font-medium">Returning</h3>
+            </div>
+            <span className="text-lg font-bold text-purple-600">{statusCounts.returning}</span>
+          </div>
+          <div className="w-full bg-muted rounded-full h-2.5">
+            <div className="bg-purple-600 h-2.5 rounded-full" style={{ width: `${returningPercentage}%` }}></div>
+          </div>
+          <p className="text-sm text-muted-foreground mt-1">{returningPercentage}% of roster</p>
+        </div>
+
         <div className="bg-card rounded-lg shadow-md p-6">
           <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-2">
@@ -44,20 +60,6 @@ export function TeamStats({ statusCounts }: TeamStatsProps) {
             <div className="bg-green-600 h-2.5 rounded-full" style={{ width: `${committedPercentage}%` }}></div>
           </div>
           <p className="text-sm text-muted-foreground mt-1">{committedPercentage}% of roster</p>
-        </div>
-
-        <div className="bg-card rounded-lg shadow-md p-6">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-2">
-              <UserX className="h-5 w-5 text-amber-600" />
-              <h3 className="font-medium">Transfer Portal</h3>
-            </div>
-            <span className="text-lg font-bold text-amber-600">{statusCounts.transfer}</span>
-          </div>
-          <div className="w-full bg-muted rounded-full h-2.5">
-            <div className="bg-amber-600 h-2.5 rounded-full" style={{ width: `${transferPercentage}%` }}></div>
-          </div>
-          <p className="text-sm text-muted-foreground mt-1">{transferPercentage}% of roster</p>
         </div>
 
         <div className="bg-card rounded-lg shadow-md p-6">

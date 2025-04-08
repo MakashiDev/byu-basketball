@@ -163,7 +163,7 @@ export function PlayerForm({ player }: PlayerFormProps) {
                   <SelectItem value="undecided">Undecided</SelectItem>
                   <SelectItem value="graduated">Graduated</SelectItem>
                   <SelectItem value="transferred">Transferred</SelectItem>
-                  <SelectItem value="nba_draft">NBA Draft</SelectItem>
+                  <SelectItem value="nbaDraft">NBA Draft</SelectItem>
                   <SelectItem value="likely_returning">Likely Returning</SelectItem>
                 </SelectContent>
               </Select>

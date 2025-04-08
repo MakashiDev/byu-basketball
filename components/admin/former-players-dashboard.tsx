@@ -14,7 +14,7 @@ interface FormerPlayersDashboardProps {
 export function FormerPlayersDashboard({ formerPlayers }: FormerPlayersDashboardProps) {
   const graduatedPlayers = formerPlayers.filter((p) => p.status === "graduated")
   const transferredPlayers = formerPlayers.filter((p) => p.status === "transferred")
-  const nbaDraftPlayers = formerPlayers.filter((p) => p.status === "nba_draft")
+  const nbaDraftPlayers = formerPlayers.filter((p) => p.status === "nbaDraft")
 
   return (
     <div className="space-y-6">
@@ -54,11 +54,11 @@ export function FormerPlayersDashboard({ formerPlayers }: FormerPlayersDashboard
       </div>
 
       <Tabs defaultValue="all" className="w-full">
-        <TabsList className="grid grid-cols-4 w-full max-w-md">
+        <TabsList className="grid grid-cols-2 md:flex">
           <TabsTrigger value="all">All Former Players</TabsTrigger>
           <TabsTrigger value="graduated">Graduated</TabsTrigger>
           <TabsTrigger value="transferred">Transferred</TabsTrigger>
-          <TabsTrigger value="nba_draft">NBA Draft</TabsTrigger>
+          <TabsTrigger value="nbaDraft">NBA Draft</TabsTrigger>
         </TabsList>
         <TabsContent value="all">
           <Card>
@@ -93,7 +93,7 @@ export function FormerPlayersDashboard({ formerPlayers }: FormerPlayersDashboard
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="nba_draft">
+        <TabsContent value="nbaDraft">
           <Card>
             <CardHeader>
               <CardTitle>NBA Draft Players</CardTitle>
