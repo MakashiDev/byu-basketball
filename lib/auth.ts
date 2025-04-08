@@ -13,9 +13,9 @@ const ADMIN_CREDENTIALS = {
 // Auth configuration
 const AUTH_CONFIG = {
   tokenName: process.env.AUTH_TOKEN_NAME || "auth-token",
-  tokenExpiry: parseInt(process.env.AUTH_TOKEN_EXPIRY || "86400", 10), // Default: 24 hours in seconds
+  tokenExpiry: parseInt(process.env.AUTH_TOKEN_EXPIRY || "86400"),
   secret: process.env.AUTH_SECRET || "fallback-secret-key-please-set-in-env-vars",
-  saltRounds : parseInt(process.env.AUTH_SALT_ROUNDS || "10", 10),
+  saltRounds : parseInt(process.env.AUTH_SALT_ROUNDS || "10"),
 }
 
 export async function login(username: string, password: string) {
@@ -80,6 +80,7 @@ export async function requireAuth() {
 
 export async function hashPassword(password: string): Promise<string> {
   const hash = await bcrypt.hash(password, AUTH_CONFIG.saltRounds)
+  console.log(hash, AUTH_CONFIG.saltRounds)
   return hash
 }
 
