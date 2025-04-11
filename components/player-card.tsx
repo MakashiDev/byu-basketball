@@ -86,9 +86,13 @@ export function PlayerCard({ player }: PlayerCardProps) {
               ) :
               player.id === 18 ? (
                 <Image src="https://images.squarespace-cdn.com/content/v1/6696d414adc7aa4a82851e22/c26063c2-17ce-42a7-89db-2448f1eb0934/UP_Website.png" alt="Utah Prep Logo" width={20} height={20}  />
+              ) :  
+              player.id === 18 ? (
+                <Image src="https://1000logos.net/wp-content/uploads/2019/10/Baylor-Bears-Logo-2005.png" alt="Baylor Bears" width={20} height={20}  />
               ) :  (
                 <Image src="/images/byu-logo.png" alt="BYU Logo" width={20} height={20}  />
               )
+            
               
             }
           </div>
