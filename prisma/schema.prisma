@@ -21,6 +21,7 @@ model Player {
   highSchoolOrPrevTeam String
   status               String  // "committed" | "transfer" | "unconfirmed" | "graduated" | "transferred" | "nbaDraft" | "likely_returning"
   formerPlayer         Boolean @default(false)
+  transferDestination  String?
   stats                String?
   image                String?
   createdAt            DateTime @default(now())

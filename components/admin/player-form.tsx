@@ -196,6 +196,19 @@ export function PlayerForm({ player }: PlayerFormProps) {
                 required
               />
             </div>
+
+            {(formData.status === "transfer" || formData.status === "transferred") && (
+              <div className="space-y-2">
+                <Label htmlFor="transferDestination">Transferring to</Label>
+                <Input
+                  id="transferDestination"
+                  name="transferDestination"
+                  value={formData.transferDestination || ""}
+                  onChange={handleChange}
+                  placeholder="Enter transfer destination school"
+                />
+              </div>
+            )}
           </div>
 
           <div className="space-y-2">

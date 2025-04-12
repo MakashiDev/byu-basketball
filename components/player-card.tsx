@@ -61,14 +61,20 @@ export function PlayerCard({ player }: PlayerCardProps) {
             <p className="text-muted-foreground">Height</p>
             <p className="font-medium">{player.height}</p>
           </div>
-          <div className="col-span-2">
+          <div className="">
             <p className="text-muted-foreground">Hometown</p>
             <p className="font-medium">{player.hometown}</p>
           </div>
+          {player.status === "transfer" && player.transferDestination && (
+            <div>
+              <p className="text-muted-foreground">Transfer To</p>
+              <p className="font-medium">{player.transferDestination}</p>
+            </div>
+          )}
           <div className="col-span-2">
             <p className="text-muted-foreground">Previous Team</p>
             <p className="font-medium">{player.highSchoolOrPrevTeam}</p>
-          </div>
+          </div>  
         </div>
       </CardContent>
       <CardFooter className="bg-muted px-4 py-3 border-t border-border">
