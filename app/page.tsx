@@ -17,7 +17,7 @@ export default async function Home() {
   };
 
   const sortedPlayers = players.sort((a, b) => {
-    return (order[a.status] ?? 99) - (order[b.status] ?? 99);
+    return (order[a.status as keyof typeof order] ?? 99) - (order[b.status as keyof typeof order] ?? 99);
   });
   return (
     <main className="min-h-screen bg-background">
