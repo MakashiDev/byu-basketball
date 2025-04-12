@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { PlayerCard } from "@/components/player-card";
-import { TeamStats } from "@/components/team-stats";
-import { ExitStats } from "./exiting-stats";
 import type { Player } from "@prisma/client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 interface PlayerStatusDashboardProps {
@@ -152,13 +150,6 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
 
       {/* Main Content */}
       <TabsContent value="roster">
-        {/* Team Stats Section */}
-        <div className="dark:bg-[#002E5D]/10 bg-muted py-8 border-b border-border max-sm:hidden">
-          <div className="container mx-auto px-4">
-            <TeamStats statusCounts={statusCounts} />
-          </div>
-        </div>
-
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
             <div className="flex flex-col gap-2">
@@ -218,11 +209,6 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
       </TabsContent>
 
       <TabsContent value="exiting">
-      <div className="dark:bg-[#002E5D]/10 bg-muted py-8 border-b border-border max-sm:hidden">
-          <div className="container mx-auto px-4">
-            <ExitStats statusCounts={statusCounts} />
-          </div>
-        </div>
 
         <div className="container mx-auto px-4 py-8">
           <div className="flex flex-col gap-2 mb-8">
