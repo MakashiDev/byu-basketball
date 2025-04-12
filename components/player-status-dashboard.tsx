@@ -8,16 +8,6 @@ import { TeamStats } from "@/components/team-stats";
 import { ExitStats } from "./exiting-stats";
 import type { Player } from "@prisma/client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-
-type PlayerStatus =
-  | "committed"
-  | "transfer"
-  | "unconfirmed"
-  | "graduated"
-  | "transferred"
-  | "nbaDraft"
-  | "returning";
-
 interface PlayerStatusDashboardProps {
   players: Player[];
 }
@@ -53,7 +43,7 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
     (p) => ["graduated", "transfer", "nbaDraft"].includes(p.status)
   )
   
-  const committedPlayers = players.filter((p) => p.status === "committed");
+  const committedPlayers = players.filter((p) => ["committed", "transfer", "projected"].includes(p.status))
   const returningPlayers = players.filter((p) => p.status === "returning");
   const unconfirmedPlayers = players.filter((p) => p.status === "unconfirmed");
   

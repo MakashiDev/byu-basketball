@@ -10,6 +10,8 @@ interface PlayerCardProps {
 export function PlayerCard({ player }: PlayerCardProps) {
   const statusColors = {
     committed: "bg-green-600 hover:bg-green-600",
+    transfered: "bg-green-600 hover:bg-green-600",
+    projected: "bg-yellow-600 hover:bg-yellow-600",
     transfer: "bg-amber-600 hover:bg-amber-600",
     unconfirmed: "bg-gray-600 hover:bg-gray-600",
     returning: "bg-purple-600 hover:bg-purple-600",
@@ -19,6 +21,8 @@ export function PlayerCard({ player }: PlayerCardProps) {
 
   const statusLabels = {
     committed: "Committed",
+    transfered: "Transfered",
+    projected: "Projected",
     transfer: "Transfer Portal",
     unconfirmed: "Unconfirmed",
     returning: "Returning",
