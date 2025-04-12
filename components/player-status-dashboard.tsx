@@ -172,13 +172,15 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
           </div>
 
           {/* Roster Sub-tabs */}
-          <Tabs defaultValue="all" className="mt-6">
-            <TabsList className="mb-6">
-              <TabsTrigger value="all">All ({currentPlayers.length})</TabsTrigger>
-              <TabsTrigger value="returning">Returning ({returningPlayers.length})</TabsTrigger>
-              <TabsTrigger value="committed">Committed ({committedPlayers.length})</TabsTrigger>
-              <TabsTrigger value="unconfirmed">Unconfirmed ({unconfirmedPlayers.length})</TabsTrigger>
-            </TabsList>
+          <Tabs defaultValue="all" className="">
+            <div className="sticky top-[56px] bg-background z-30 border-b">
+              <TabsList className="my-5">
+                <TabsTrigger value="all">All ({currentPlayers.length})</TabsTrigger>
+                <TabsTrigger value="returning">Returning ({returningPlayers.length})</TabsTrigger>
+                <TabsTrigger value="committed">Committed ({committedPlayers.length})</TabsTrigger>
+                <TabsTrigger value="unconfirmed">Unconfirmed ({unconfirmedPlayers.length})</TabsTrigger>
+              </TabsList>
+            </div>
 
             <TabsContent value="all">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -235,13 +237,15 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
 
 
           {/* Exiting Sub-tabs */}
-          <Tabs defaultValue="all" className="mt-6">
-            <TabsList className="mb-6">
-              <TabsTrigger value="all">All ({exitingPlayers.length})</TabsTrigger>
-              <TabsTrigger value="nbaDraft">NBA Draft ({nbaDraftPlayers.length})</TabsTrigger>
-              <TabsTrigger value="graduated">Graduated ({graduatedPlayers.length})</TabsTrigger>
-              <TabsTrigger value="transferred">Transferring ({transferredPlayers.length})</TabsTrigger>
-            </TabsList>
+          <Tabs defaultValue="all" className="">
+            <div className="sticky top-[56px] bg-background z-30 border-b">
+              <TabsList className="my-5">
+                <TabsTrigger value="all">All ({exitingPlayers.length})</TabsTrigger>
+                <TabsTrigger value="nbaDraft">NBA Draft ({nbaDraftPlayers.length})</TabsTrigger>
+                <TabsTrigger value="graduated">Graduated ({graduatedPlayers.length})</TabsTrigger>
+                <TabsTrigger value="transferred">Transferring ({transferredPlayers.length})</TabsTrigger>
+              </TabsList>
+            </div>
 
             <TabsContent value="all">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
