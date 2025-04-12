@@ -11,7 +11,7 @@ export default async function Home() {
     returning: 1,
     committed: 2,
     transfered: 3,
-    projected: 1,
+    projected: 4,
     unconfirmed: 5,
     nbaDraft: 6,
     graduated: 7  ,
