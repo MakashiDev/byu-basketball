@@ -43,7 +43,7 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
     (p) => ["graduated", "transfer", "nbaDraft"].includes(p.status)
   )
   
-  const committedPlayers = players.filter((p) => ["committed", "transfer", "projected"].includes(p.status))
+  const committedPlayers = players.filter((p) => ["committed", "transfered", "projected"].includes(p.status))
   const returningPlayers = players.filter((p) => p.status === "returning");
   const unconfirmedPlayers = players.filter((p) => p.status === "unconfirmed");
   
