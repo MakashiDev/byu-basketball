@@ -22,7 +22,7 @@ export function PlayerCard({ player }: PlayerCardProps) {
   const statusLabels = {
     committed: "Committed",
     transfered: "Transfered",
-    
+    projected: "Projected",
     transfer: "Transfer Portal",
     unconfirmed: "Unconfirmed",
     returning: "Returning",
