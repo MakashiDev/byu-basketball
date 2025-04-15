@@ -250,15 +250,14 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
                 <h2 className="text-2xl md:text-3xl font-bold text-[#002E5D] dark:text-blue-400">
                   2025-26 Roster Outlook
                 </h2>
-                <p className="text-muted-foreground">
+                <p ref={rosterFilterRef} className="text-muted-foreground">
                   Players expected to be on next season's roster
                 </p>
               </div>
             </div>
 
             {/* Roster Sub-tabs */}
-            <div ref={rosterFilterRef} className="h-16" /> {/* Invisible spacer for scroll target */}
-            <Tabs defaultValue="all" className="mt-6">
+            <Tabs defaultValue="all" className="">
               <div className="sticky top-[55px] z-30 bg-background border-b">
                 <TabsList className="my-5">
                   <TabsTrigger value="all" onClick={() => rosterFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>All ({currentPlayers.length})</TabsTrigger>
@@ -307,12 +306,12 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
 
         <TabsContent value="exiting">
 
-          <div className="container mx-auto px-4 py-8">
-            <div className="flex flex-col gap-2 mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#002E5D] dark:text-blue-400">
+          <div  className="container mx-auto px-4 py-8">
+            <div  className="flex flex-col gap-2 mb-8">
+              <h2  className="text-2xl md:text-3xl font-bold text-[#002E5D] dark:text-blue-400">
                 Exiting Players
               </h2>
-              <p className="text-muted-foreground">
+              <p ref={exitingFilterRef} className="text-muted-foreground">
                 Players who are leaving or have left the program
               </p>
             </div>
@@ -320,7 +319,6 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
 
 
             {/* Exiting Sub-tabs */}
-            <div ref={exitingFilterRef} className="h-16" />
             <Tabs defaultValue="all" className="">
               <div className="sticky top-[55px] z-30 bg-background border-b">
                 <TabsList className="my-5">
