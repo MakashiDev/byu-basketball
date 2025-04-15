@@ -71,7 +71,7 @@ export function PlayerCard({ player }: PlayerCardProps) {
           </div>
           {player.status === "transfer" && player.transferDestination && (
             <div>
-              <p className="text-muted-foreground">Transfer To</p>
+              <p className="text-muted-foreground">Transferring To</p>
               <p className="font-medium">{player.transferDestination}</p>
             </div>
           )}
