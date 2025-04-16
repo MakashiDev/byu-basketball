@@ -53,9 +53,12 @@ export function PlayerForm({ player }: PlayerFormProps) {
 
     try {
       const url = isEditing ? `/api/players/${player.id}` : "/api/players"
+      console.log("url", url)
 
       const method = isEditing ? "PUT" : "POST"
-
+      console.log("method", method)
+      console.log("formData", formData)
+      console.log("isEditing", isEditing)
       const response = await fetch(url, {
         method,
         headers: {
@@ -138,9 +141,9 @@ export function PlayerForm({ player }: PlayerFormProps) {
                   <SelectItem value="Sophomore">Sophomore</SelectItem>
                   <SelectItem value="Junior">Junior</SelectItem>
                   <SelectItem value="Senior">Senior</SelectItem>
-                  <SelectItem value="RS-Junior">RS-Freshman</SelectItem>
+                  <SelectItem value="RS-Freshman">RS-Freshman</SelectItem>
                   <SelectItem value="RS-Junior">RS-Junior</SelectItem>
-                  <SelectItem value="RS-Junior">RS-Sophomore</SelectItem>
+                  <SelectItem value="RS-Sophmore">RS-Sophomore</SelectItem>
                   <SelectItem value="RS-Senior">RS-Senior</SelectItem>
                   <SelectItem value="Graduate">Graduate</SelectItem>
                 </SelectContent>
