@@ -53,6 +53,8 @@ export async function PUT(request: NextRequest, props: { params: Promise<{ id: s
         hometown: updatedPlayer.hometown ?? existingPlayer.hometown,
         highSchoolOrPrevTeam: updatedPlayer.highSchoolOrPrevTeam ?? existingPlayer.highSchoolOrPrevTeam,
         status: updatedPlayer.status ?? existingPlayer.status,
+        transferDestination: updatedPlayer.transferDestination,
+        formerPlayer: updatedPlayer.formerPlayer ?? existingPlayer.formerPlayer,
         stats: updatedPlayer.stats,
         image: updatedPlayer.image,
       },
