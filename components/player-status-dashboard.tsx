@@ -324,7 +324,7 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
                 <TabsList className="my-5">
                   <TabsTrigger value="all" onClick={() => exitingFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>All ({exitingPlayers.length})</TabsTrigger>
                   <TabsTrigger value="graduated" onClick={() => exitingFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Graduated ({graduatedPlayers.length})</TabsTrigger>
-                  <TabsTrigger value="n baDraft" onClick={() => exitingFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>NBA Draft ({nbaDraftPlayers.length})</TabsTrigger>
+                  <TabsTrigger value="nbaDraft" onClick={() => exitingFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>NBA Draft ({nbaDraftPlayers.length})</TabsTrigger>
                   <TabsTrigger value="transferred" onClick={() => exitingFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Transferring ({transferredPlayers.length})</TabsTrigger>
                 </TabsList>
               </div>
