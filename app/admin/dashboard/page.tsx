@@ -70,18 +70,29 @@ export default async function DashboardPage() {
               <CardDescription>Players committed to BYU for the upcoming season</CardDescription>
             </CardHeader>
             <CardContent>
-              <PlayerTable players={players.filter((p) => p.status === "committed")} />
+              <PlayerTable players={players.filter((p) => ["committed", "projected"].includes(p.status))} />
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="committed">
+          <Card>
+            <CardHeader>
+              <CardTitle>Returning Players</CardTitle>
+              <CardDescription>Players who are expected to return to BYU for the upcoming season</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <PlayerTable players={players.filter((p) => ["likely", "returning"].includes(p.status))} />
             </CardContent>
           </Card>
         </TabsContent>
         <TabsContent value="transfer">
           <Card>
             <CardHeader>
-              <CardTitle>Transfer Portal</CardTitle>
-              <CardDescription>Players in the transfer portal</CardDescription>
+              <CardTitle>Transfering</CardTitle>
+              <CardDescription>Players who are transfering</CardDescription>
             </CardHeader>
             <CardContent>
-              <PlayerTable players={players.filter((p) => p.status === "transfer")} />
+              <PlayerTable players={players.filter((p) => ["transfer", "transferred"].includes(p.status))} />
             </CardContent>
           </Card>
         </TabsContent>
@@ -92,7 +103,18 @@ export default async function DashboardPage() {
               <CardDescription>Players with undecided status</CardDescription>
             </CardHeader>
             <CardContent>
-              <PlayerTable players={players.filter((p) => p.status === "undecided")} />
+              <PlayerTable players={players.filter((p) => p.status === "uncomfirmed")} />
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="nbaDraft">
+          <Card>
+            <CardHeader>
+              <CardTitle>NBA Draft</CardTitle>
+              <CardDescription>Players who intend to declare for the NBA Draft</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <PlayerTable players={players.filter((p) => ["nbaDraft"].includes(p.status))} />
             </CardContent>
           </Card>
         </TabsContent>
