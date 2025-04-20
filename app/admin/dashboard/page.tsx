@@ -45,7 +45,7 @@ export default async function DashboardPage() {
       <DashboardStats players={players} />
 
       <Tabs defaultValue="all" className="w-full">
-        <TabsList className="grid grid-cols-5 w-full max-w-md">
+        <TabsList className="grid grid-cols-7 w-full max-w-md">
           <TabsTrigger value="all">All Players</TabsTrigger>
           <TabsTrigger value="returning">Returning</TabsTrigger>
           <TabsTrigger value="committed">Committed</TabsTrigger>
@@ -101,11 +101,11 @@ export default async function DashboardPage() {
         <TabsContent value="undecided">
           <Card>
             <CardHeader>
-              <CardTitle>Undecided Players</CardTitle>
-              <CardDescription>Players with undecided status</CardDescription>
+              <CardTitle>Unconfirmed Players</CardTitle>
+              <CardDescription>Players with unconfirmed status</CardDescription>
             </CardHeader>
             <CardContent>
-              <PlayerTable players={players.filter((p) => p.status === "uncomfirmed")} />
+              <PlayerTable players={players.filter((p) => p.status === "unconfirmed")} />
             </CardContent>
           </Card>
         </TabsContent>
