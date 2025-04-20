@@ -9,6 +9,7 @@ export default async function Home() {
 
   const order = {
     returning: 1,
+    likely: 1.5,
     committed: 2,
     transfered: 3,
     projected: 4,

@@ -39,6 +39,8 @@ export function PlayerTable({ players }: PlayerTableProps) {
   const statusColors = {
     committed: "bg-green-600 hover:bg-green-600",
     transfer: "bg-amber-600 hover:bg-amber-600",
+    likely: "bg-purple-600 hover:bg-purple-600",
+    transferred: "bg-amber-600 hover:bg-amber-600",
     unconfirmed: "bg-gray-600 hover:bg-gray-600",
     returning: "bg-purple-600 hover:bg-purple-600",
     graduated: "bg-blue-600 hover:bg-blue-600",
@@ -48,6 +50,8 @@ export function PlayerTable({ players }: PlayerTableProps) {
   const statusLabels = {
     committed: "Committed",
     transfer: "Transfer Portal",
+    likely: "Likely",
+    transferred: "Transferred",
     unconfirmed: "Unconfirmed",
     returning: "Returning",
     graduated: "Graduated",

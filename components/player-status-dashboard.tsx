@@ -134,7 +134,7 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
   )
 
   const committedPlayers = players.filter((p) => ["committed", "projected"].includes(p.status))
-  const returningPlayers = players.filter((p) => p.status === "returning");
+  const returningPlayers = players.filter((p) => ["returning", "likely"].includes(p.status))
   const unconfirmedPlayers = players.filter((p) => p.status === "unconfirmed");
 
   // Exiting players categories

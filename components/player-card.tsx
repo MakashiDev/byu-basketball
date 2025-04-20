@@ -14,6 +14,7 @@ export function PlayerCard({ player }: PlayerCardProps) {
     transfer: "bg-amber-600 hover:bg-amber-600",
     transferred: "bg-amber-600 hover:bg-amber-600",
     unconfirmed: "bg-gray-600 hover:bg-gray-600",
+    likely: "bg-purple-600 hover:bg-purple-600",
     returning: "bg-purple-600 hover:bg-purple-600",
     graduated: "bg-blue-600 hover:bg-blue-600",
     nbaDraft: "bg-red-600 hover:bg-red-600",
@@ -26,6 +27,7 @@ export function PlayerCard({ player }: PlayerCardProps) {
     transferred: "Transferred",
     unconfirmed: "Unconfirmed",
     returning: "Returning",
+    likely: "Likely Returning",
     graduated: "Graduated",
     nbaDraft: "NBA Draft",
   }
