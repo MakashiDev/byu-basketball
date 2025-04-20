@@ -50,7 +50,7 @@ export function PlayerTable({ players }: PlayerTableProps) {
   const statusLabels = {
     committed: "Committed",
     transfer: "Transfer Portal",
-    likely: "Likely",
+    likely: "Likely Returning",
     transferred: "Transferred",
     unconfirmed: "Unconfirmed",
     returning: "Returning",
