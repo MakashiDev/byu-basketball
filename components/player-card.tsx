@@ -10,9 +10,9 @@ interface PlayerCardProps {
 export function PlayerCard({ player }: PlayerCardProps) {
   const statusColors = {
     committed: "bg-green-600 hover:bg-green-600",
-    transfered: "bg-green-600 hover:bg-green-600",
     projected: "bg-green-600 hover:bg-green-600",
     transfer: "bg-amber-600 hover:bg-amber-600",
+    transferred: "bg-amber-600 hover:bg-amber-600",
     unconfirmed: "bg-gray-600 hover:bg-gray-600",
     returning: "bg-purple-600 hover:bg-purple-600",
     graduated: "bg-blue-600 hover:bg-blue-600",
@@ -21,9 +21,9 @@ export function PlayerCard({ player }: PlayerCardProps) {
 
   const statusLabels = {
     committed: "Committed",
-    transfered: "Transfered",
     projected: "Projected",
     transfer: "Transfer Portal",
+    transferred: "Transferred",
     unconfirmed: "Unconfirmed",
     returning: "Returning",
     graduated: "Graduated",
@@ -69,7 +69,7 @@ export function PlayerCard({ player }: PlayerCardProps) {
             <p className="text-muted-foreground">Hometown</p>
             <p className="font-medium">{player.hometown}</p>
           </div>
-          {player.status === "transfer" && player.transferDestination && (
+          {player.status === "transferred" && player.transferDestination && (
             <div>
               <p className="text-muted-foreground">Transferring To</p>
               <p className="font-medium">{player.transferDestination}</p>
