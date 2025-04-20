@@ -74,7 +74,7 @@ export default async function DashboardPage() {
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="committed">
+        <TabsContent value="returning">
           <Card>
             <CardHeader>
               <CardTitle>Returning Players</CardTitle>
