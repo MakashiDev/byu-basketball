@@ -261,8 +261,8 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
               <div className="sticky top-[55px] z-30 bg-background border-b">
                 <TabsList className="my-5">
                   <TabsTrigger value="all" onClick={() => rosterFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>All ({currentPlayers.length})</TabsTrigger>
+                  <TabsTrigger value="committed" onClick={() => rosterFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Incoming ({committedPlayers.length})</TabsTrigger>
                   <TabsTrigger value="returning" onClick={() => rosterFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Returning ({returningPlayers.length})</TabsTrigger>
-                  <TabsTrigger value="committed" onClick={() => rosterFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Committed ({committedPlayers.length})</TabsTrigger>
                   <TabsTrigger value="unconfirmed" onClick={() => rosterFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Unconfirmed ({unconfirmedPlayers.length})</TabsTrigger>
                 </TabsList>
               </div>
@@ -323,8 +323,8 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
               <div className="sticky top-[55px] z-30 bg-background border-b">
                 <TabsList className="my-5">
                   <TabsTrigger value="all" onClick={() => exitingFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>All ({exitingPlayers.length})</TabsTrigger>
-                  <TabsTrigger value="nbaDraft" onClick={() => exitingFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>NBA Draft ({nbaDraftPlayers.length})</TabsTrigger>
                   <TabsTrigger value="graduated" onClick={() => exitingFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Graduated ({graduatedPlayers.length})</TabsTrigger>
+                  <TabsTrigger value="n baDraft" onClick={() => exitingFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>NBA Draft ({nbaDraftPlayers.length})</TabsTrigger>
                   <TabsTrigger value="transferred" onClick={() => exitingFilterRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })}>Transferring ({transferredPlayers.length})</TabsTrigger>
                 </TabsList>
               </div>
