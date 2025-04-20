@@ -47,10 +47,12 @@ export default async function DashboardPage() {
       <Tabs defaultValue="all" className="w-full">
         <TabsList className="grid grid-cols-5 w-full max-w-md">
           <TabsTrigger value="all">All Players</TabsTrigger>
+          <TabsTrigger value="returning">Returning</TabsTrigger>
           <TabsTrigger value="committed">Committed</TabsTrigger>
-          <TabsTrigger value="transfer">Transfer</TabsTrigger>
           <TabsTrigger value="undecided">Undecided</TabsTrigger>
+          <TabsTrigger value="nbaDraft">NBA Draft</TabsTrigger>
           <TabsTrigger value="graduated">Graduated</TabsTrigger>
+          <TabsTrigger value="transfer">Transfer</TabsTrigger>
         </TabsList>
         <TabsContent value="all">
           <Card>
