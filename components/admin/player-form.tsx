@@ -42,7 +42,7 @@ export function PlayerForm({ player }: PlayerFormProps) {
 
   function handleNumberChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target
-    const numberValue = value === "" ? undefined : Number.parseInt(value)
+    const numberValue = value === "" ? undefined : value
     setFormData((prev) => ({ ...prev, [name]: numberValue }))
   }
 
