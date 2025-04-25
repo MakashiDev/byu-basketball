@@ -101,9 +101,14 @@ export function PlayerCard({ player }: PlayerCardProps) {
               ) :  
               player.id === 21 ? (
                 <Image src="/images/baylor.webp" alt="Baylor Bears" width={20} height={20}  />
-              ) :  (
+              ) :
+              player.id === 22? (
+                <Image src="/images/siu.webp" alt="SIU Logo" width={20} height={20}  />
+              ) :
+              (
                 <Image src="/images/byu-logo.png" alt="BYU Logo" width={20} height={20}  />
               )
+              
             
               
             }
