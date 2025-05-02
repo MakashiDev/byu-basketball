@@ -105,6 +105,9 @@ export function PlayerCard({ player }: PlayerCardProps) {
               player.id === 22? (
                 <Image src="/images/siu.webp" alt="SIU Logo" width={20} height={20}  />
               ) :
+              player.id === 23? (
+                <Image src="/images/vandals.webp" alt="Idaho Vandals Logo" width={20} height={20}  />
+              ):
               (
                 <Image src="/images/byu-logo.png" alt="BYU Logo" width={20} height={20}  />
               )
