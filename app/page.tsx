@@ -16,7 +16,8 @@ export default async function Home() {
     graduated: 6  ,
     nbaDraft: 7,
     transferred: 8,
-    transfer: 9
+    transfer: 9,
+    formerWalkOn: 10,
   };
 
   const sortedPlayers = players.sort((a, b) => {

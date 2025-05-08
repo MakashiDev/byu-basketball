@@ -169,6 +169,7 @@ export function PlayerForm({ player }: PlayerFormProps) {
                   <SelectItem value="nbaDraft">NBA Draft</SelectItem>
                   <SelectItem value="returning">Returning</SelectItem>
                   <SelectItem value="likely">Likely</SelectItem>
+                  <SelectItem value="formerWalkOn">Former Walk-On</SelectItem>
                 </SelectContent>
               </Select>
             </div>

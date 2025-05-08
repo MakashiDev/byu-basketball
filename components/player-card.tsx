@@ -18,6 +18,7 @@ export function PlayerCard({ player }: PlayerCardProps) {
     returning: "bg-purple-600 hover:bg-purple-600",
     graduated: "bg-blue-600 hover:bg-blue-600",
     nbaDraft: "bg-red-600 hover:bg-red-600",
+    formerWalkOn: "bg-amber-600 hover:bg-amber-600",
   }
 
   const statusLabels = {
@@ -30,6 +31,7 @@ export function PlayerCard({ player }: PlayerCardProps) {
     likely: "Likely Returning",
     graduated: "Graduated",
     nbaDraft: "NBA Draft",
+    formerWalkOn: "Former Walk-On",
   }
 
   return (

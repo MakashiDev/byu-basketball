@@ -127,10 +127,10 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
   // Filter players by status categories
   // Roster categories
   const currentPlayers = players.filter(
-    (p) => !["graduated", "transfer", "nbaDraft", "transferred"].includes(p.status)
+    (p) => !["graduated", "transfer", "nbaDraft", "transferred", "formerWalkOn"].includes(p.status)
   );
   const exitingPlayers = players.filter(
-    (p) => ["graduated", "transfer", "nbaDraft", "transferred"].includes(p.status)
+    (p) => ["graduated", "transfer", "nbaDraft", "transferred", "formerWalkOn"].includes(p.status)
   )
 
   const committedPlayers = players.filter((p) => ["committed", "projected"].includes(p.status))
@@ -140,7 +140,7 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
   // Exiting players categories
   const graduatedPlayers = players.filter((p) => p.status === "graduated");
   const nbaDraftPlayers = players.filter((p) => p.status === "nbaDraft");
-  const transferredPlayers = players.filter((p) => ["transfer", "transferred"].includes(p.status))
+  const transferredPlayers = players.filter((p) => ["transfer", "transferred", "formerWalkOn"].includes(p.status))
 
   // No longer need filteredPlayers since we're using tabs for filtering
 
