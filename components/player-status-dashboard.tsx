@@ -1,13 +1,15 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import  Depth_Chart  from "@/components/depth-chart" ;
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { PlayerCard } from "@/components/player-card";
-import type { Player } from "@prisma/client";
+import type { Player, DepthChart } from "@prisma/client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 interface PlayerStatusDashboardProps {
   players: Player[];
+  depthChart?: DepthChart[] | null;
 }
 
 function BottomStuff() {
@@ -100,7 +102,7 @@ function BottomStuff() {
 }
 
 
-export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
+export function PlayerStatusDashboard({ players, depthChart }: PlayerStatusDashboardProps)  {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const rosterFilterRef = useRef<HTMLDivElement>(null);
@@ -298,6 +300,7 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
                   ))}
                 </div>
               </TabsContent>
+              <Depth_Chart depthChart={depthChart} />
               <BottomStuff />
             </Tabs>
           </div>
@@ -362,6 +365,8 @@ export function PlayerStatusDashboard({ players }: PlayerStatusDashboardProps) {
                 </div>
               </TabsContent>
               <BottomStuff />
+              <Depth_Chart/>
+
             </Tabs>
           </div>
         </TabsContent>

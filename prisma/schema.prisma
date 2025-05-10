@@ -19,11 +19,32 @@ model Player {
   year                 String
   hometown             String
   highSchoolOrPrevTeam String
-  status               String  // "committed" | "transfer" | "unconfirmed" | "graduated" | "transferred" | "nbaDraft" | "likely_returning"
+  status               String
   formerPlayer         Boolean @default(false)
   transferDestination  String?
   stats                String?
   image                String?
   createdAt            DateTime @default(now())
   updatedAt            DateTime @updatedAt
+
+  // Relations to DepthChart
+  starterDepthChart    DepthChart[] @relation("Starter")
+  backup1DepthChart    DepthChart[] @relation("Backup1")
+  backup2DepthChart    DepthChart[] @relation("Backup2")
+}
+
+
+model DepthChart {
+  id            Int     @id @default(autoincrement())
+  position      String  // "PG", "SG", "SF", "PF", "C"
+  starterId     Int?
+  backup1Id     Int?
+  backup2Id     Int?
+
+  starter       Player? @relation("Starter", fields: [starterId], references: [id])
+  backup1       Player? @relation("Backup1", fields: [backup1Id], references: [id])
+  backup2       Player? @relation("Backup2", fields: [backup2Id], references: [id])
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }

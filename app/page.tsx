@@ -6,6 +6,13 @@ export const dynamic = "force-dynamic"
 
 export default async function Home() {
   const players = await prisma.player.findMany()
+  const depthChart = await prisma.depthChart.findMany({
+    include: {
+      starter: true,
+      backup1: true,
+      backup2: true,
+    },
+  })
 
   const order = {
     committed: 1,
@@ -26,7 +33,7 @@ export default async function Home() {
   return (
     <main className="min-h-screen bg-background">
       <SiteHeader />
-      <PlayerStatusDashboard players={sortedPlayers} />
+      <PlayerStatusDashboard players={sortedPlayers} depthChart={depthChart}/>
     </main>
   )
 }
