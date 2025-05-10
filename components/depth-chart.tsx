@@ -21,7 +21,7 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
       <Table className="bg-gray-900 rounded-xl">
         <TableHeader>
           <TableRow>
-            <TableHead>Position</TableHead>
+            <TableHead className="w-12 md:w-16"></TableHead>
             <TableHead>Starter</TableHead>
             <TableHead>Rotation</TableHead>
             <TableHead>Rotation</TableHead>
@@ -30,7 +30,7 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
         </TableHeader>
         <TableBody>
           <TableRow>
-            <TableCell>PG</TableCell>
+            <TableCell className="w-12 md:w-16">PG</TableCell>
             <TableCell>
               <div className="flex items-center gap-3">
                 <div className="relative">
@@ -42,7 +42,7 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {PG?.starter.name}
                 </span>
               </div>
@@ -58,7 +58,7 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {PG?.backup1.name}
                 </span>
               </div>
@@ -74,14 +74,14 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {PG?.backup2.name}
                 </span>
               </div>
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>SG</TableCell>
+            <TableCell className="w-12 md:w-16">SG</TableCell>
             <TableCell>
               <div className="flex items-center gap-3">
                 <div className="relative">
@@ -93,7 +93,7 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {SG?.starter.name}
                 </span>
               </div>
@@ -109,7 +109,7 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {SG?.backup1.name}
                 </span>
               </div>
@@ -125,14 +125,14 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {SG?.backup2.name}
                 </span>
               </div>
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>SF</TableCell>
+            <TableCell className="w-12 md:w-16">SF</TableCell>
             <TableCell>
               <div className="flex items-center gap-3">
                 <div className="relative">
@@ -144,7 +144,7 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {SF?.starter.name}
                 </span>
               </div>
@@ -160,7 +160,7 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {SF?.backup1.name}
                 </span>
               </div>
@@ -176,14 +176,14 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {SF?.backup2.name}
                 </span>
               </div>
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>PF</TableCell>
+            <TableCell className="w-12 md:w-16">PF</TableCell>
             <TableCell>
               <div className="flex items-center gap-3">
                 <div className="relative">
@@ -195,7 +195,7 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {PF?.starter.name}
                 </span>
               </div>
@@ -211,7 +211,7 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {PF?.backup1.name}
                 </span>
               </div>
@@ -227,14 +227,14 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {PF?.backup2.name}
                 </span>
               </div>
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>C</TableCell>
+            <TableCell className="w-12 md:w-16">C</TableCell>
             <TableCell>
               <div className="flex items-center gap-3">
                 <div className="relative">
@@ -246,7 +246,7 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {C?.starter.name}
                 </span>
               </div>
@@ -262,7 +262,7 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {C?.backup1.name}
                 </span>
               </div>
@@ -278,7 +278,7 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
                     className="w-8 h-8 hidden sm:block rounded-full object-top object-cover border-2 border-blue-500 shadow-lg transition-transform hover:scale-110"
                   />
                 </div>
-                <span className="font-semibold text-[0.7rem] md:text-base text-gray-200 hover:text-blue-400 transition-colors">
+                <span className="font-semibold text-xs md:text-lg text-gray-200 hover:text-blue-400 transition-colors">
                   {C?.backup2.name}
                 </span>
               </div>
