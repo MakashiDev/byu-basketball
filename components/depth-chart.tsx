@@ -16,7 +16,7 @@ export default function Depth_Chart({ depthChart }: depthChartProps) {
   const C = depthChart?.filter(position => position.position === "C")[0]
 
   return (
-    <div className="bg-black mt-12">
+    <div className="mt-12">
       <h1 className="font-bold mb-6 text-white text-3xl"> Projected Depth Chart</h1>
       <Table className="bg-gray-900 rounded-xl">
         <TableHeader>
