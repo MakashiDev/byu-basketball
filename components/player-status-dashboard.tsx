@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import  Depth_Chart  from "@/components/depth-chart" ;
+import { usePathname } from 'next/navigation';
+import Depth_Chart from "@/components/depth-chart";
 import Image from "next/image";
 import { ChevronDown } from "lucide-react";
 import { PlayerCard } from "@/components/player-card";
@@ -12,101 +13,108 @@ interface PlayerStatusDashboardProps {
   depthChart?: DepthChart[] | null;
 }
 
-function BottomStuff() {
-  return (
-    <>
-      {/* Cosmo Feature Section */}
-      <div className="bg-[#002E5D]/5 dark:bg-[#002E5D]/10 py-12 my-8">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="md:w-1/3 relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl">
-              <Image
-                src="/images/cosmo.png"
-                alt="Cosmo the Cougar"
-                fill
-                className="object-cover object-center"
-              />
+
+
+export function PlayerStatusDashboard({ players, depthChart }: PlayerStatusDashboardProps) {
+  function BottomStuff() {
+    return (
+      <>
+
+        {/* Depth Chart Section */}
+        <div ref={depthChartRef} className="pt-32">
+          <Depth_Chart depthChart={depthChart} />
+        </div>
+        {/* Cosmo Feature Section */}
+        <div className="bg-[#002E5D]/5 dark:bg-[#002E5D]/10 py-12 my-8">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row items-center gap-8">
+              <div className="md:w-1/3 relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden shadow-xl">
+                <Image
+                  src="/images/cosmo.png"
+                  alt="Cosmo the Cougar"
+                  fill
+                  className="object-cover object-center"
+                />
+              </div>
+              <div className="md:w-2/3">
+                <h2 className="text-3xl font-bold text-[#002E5D] dark:text-blue-400 mb-4">
+                  BYU Basketball: Big 12 Ready
+                </h2>
+                <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                  The Cougars are making their mark in the Big 12 Conference. With
+                  a strong roster of talented players, BYU basketball is poised
+                  for success in one of college basketball's most competitive
+                  conferences.
+                </p>
+                <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
+                  As the 2025-26 season approaches, fans are eager to see which
+                  players will commit to the program and which might explore
+                  opportunities elsewhere. Stay updated with our roster tracker to
+                  follow all the latest player status changes.
+                </p>
+                <div className="flex items-center gap-4 mt-6">
+                  <Image
+                    src="/images/byu-logo.png"
+                    alt="BYU Logo"
+                    width={60}
+                    height={60}
+                  />
+                  <div className="h-12 w-0.5 bg-gray-300 dark:bg-gray-700"></div>
+                  <Image
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Big_12_logo_in_BYU_colors.svg/2560px-Big_12_logo_in_BYU_colors.svg.png"
+                    alt="Big 12 Logo"
+                    width={80}
+                    height={40}
+                  />
+                </div>
+              </div>
             </div>
-            <div className="md:w-2/3">
-              <h2 className="text-3xl font-bold text-[#002E5D] dark:text-blue-400 mb-4">
-                BYU Basketball: Big 12 Ready
-              </h2>
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
-                The Cougars are making their mark in the Big 12 Conference. With
-                a strong roster of talented players, BYU basketball is poised
-                for success in one of college basketball's most competitive
-                conferences.
-              </p>
-              <p className="text-lg text-gray-700 dark:text-gray-300 mb-4">
-                As the 2025-26 season approaches, fans are eager to see which
-                players will commit to the program and which might explore
-                opportunities elsewhere. Stay updated with our roster tracker to
-                follow all the latest player status changes.
-              </p>
-              <div className="flex items-center gap-4 mt-6">
+          </div>
+        </div>
+
+        {/* Footer */}
+        <footer className="bg-[#002E5D] dark:bg-[#001a33] text-white py-8 mt-12">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              <div className="flex items-center gap-4">
                 <Image
                   src="/images/byu-logo.png"
                   alt="BYU Logo"
                   width={60}
                   height={60}
                 />
-                <div className="h-12 w-0.5 bg-gray-300 dark:bg-gray-700"></div>
+                <div>
+                  <h3 className="font-bold text-xl">BYU Cougars</h3>
+                  <p className="text-white/70">
+                    Disclaimer, this is a fan site and is not affiliated with BYU
+                    or the Big 12 Conference
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-6">
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Big_12_logo_in_BYU_colors.svg/2560px-Big_12_logo_in_BYU_colors.svg.png"
                   alt="Big 12 Logo"
                   width={80}
                   height={40}
                 />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <footer className="bg-[#002E5D] dark:bg-[#001a33] text-white py-8 mt-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-4">
-              <Image
-                src="/images/byu-logo.png"
-                alt="BYU Logo"
-                width={60}
-                height={60}
-              />
-              <div>
-                <h3 className="font-bold text-xl">BYU Cougars</h3>
+                <div className="h-10 w-0.5 bg-white/20"></div>
                 <p className="text-white/70">
-                  Disclaimer, this is a fan site and is not affiliated with BYU
-                  or the Big 12 Conference
+                  © {new Date().getFullYear()} Christian Furr
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-6">
-              <Image
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Big_12_logo_in_BYU_colors.svg/2560px-Big_12_logo_in_BYU_colors.svg.png"
-                alt="Big 12 Logo"
-                width={80}
-                height={40}
-              />
-              <div className="h-10 w-0.5 bg-white/20"></div>
-              <p className="text-white/70">
-                © {new Date().getFullYear()} Christian Furr
-              </p>
-            </div>
           </div>
-        </div>
-      </footer>
-    </>
-  )
-}
+        </footer>
+      </>
+    )
+  }
 
-
-export function PlayerStatusDashboard({ players, depthChart }: PlayerStatusDashboardProps)  {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const rosterFilterRef = useRef<HTMLDivElement>(null);
   const exitingFilterRef = useRef<HTMLDivElement>(null);
+  const depthChartRef = useRef<HTMLDivElement>(null); // Add this line to create a ref for the Depth Chart tab
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -125,6 +133,21 @@ export function PlayerStatusDashboard({ players, depthChart }: PlayerStatusDashb
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const pathname = usePathname();
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+
+    const scrollMap: Record<string, React.RefObject<HTMLDivElement | null>> = {
+      rosterfilter: rosterFilterRef,
+      exitingfilter: exitingFilterRef,
+      depthchart: depthChartRef,
+    };
+
+    const targetRef = scrollMap[hash];
+    if (targetRef?.current) {
+      targetRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [pathname]); // rerun when URL change
 
   // Filter players by status categories
   // Roster categories
@@ -300,7 +323,6 @@ export function PlayerStatusDashboard({ players, depthChart }: PlayerStatusDashb
                   ))}
                 </div>
               </TabsContent>
-              <Depth_Chart depthChart={depthChart} />
               <BottomStuff />
             </Tabs>
           </div>
@@ -309,9 +331,9 @@ export function PlayerStatusDashboard({ players, depthChart }: PlayerStatusDashb
 
         <TabsContent value="exiting">
 
-          <div  className="container mx-auto px-4 py-8">
-            <div  className="flex flex-col gap-2 mb-8">
-              <h2  className="text-2xl md:text-3xl font-bold text-[#002E5D] dark:text-blue-400">
+          <div className="container mx-auto px-4 py-8">
+            <div className="flex flex-col gap-2 mb-8">
+              <h2 className="text-2xl md:text-3xl font-bold text-[#002E5D] dark:text-blue-400">
                 Exiting Players
               </h2>
               <p ref={exitingFilterRef} className="text-muted-foreground">
@@ -364,9 +386,8 @@ export function PlayerStatusDashboard({ players, depthChart }: PlayerStatusDashb
                   ))}
                 </div>
               </TabsContent>
-              <BottomStuff />
-              <Depth_Chart/>
 
+              <BottomStuff />
             </Tabs>
           </div>
         </TabsContent>
