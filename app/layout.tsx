@@ -3,7 +3,8 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { PostHogProvider } from '@/components/PostHogProvider'
-
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 export const metadata: Metadata = {
   title: 'BYU Roster 2025-26',
   description: 'Christian Furr', 
@@ -23,6 +24,8 @@ export default function RootLayout({
           </ThemeProvider>
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || ""} />
         </PostHogProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
