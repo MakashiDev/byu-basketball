@@ -73,12 +73,18 @@ export function PlayerCard({ player }: PlayerCardProps) {
             <p className="text-muted-foreground">Hometown</p>
             <p className="font-medium">{player.hometown}</p>
           </div>
-          {player.status === "transferred" || player.status === "nbaDraft" && player.transferDestination && (
+          {player.status === "transferred"  && player.transferDestination && (
             <div>
-              <p className="text-muted-foreground">{player.status === "nbaDraft" ? "Drafted By" : "Transferring To"}</p>
+              <p className="text-muted-foreground">Transferring To</p>
+              <p className="font-medium">{player.transferDestination}</p>
+            </div>
+          )}{player.status === "nbaDraft" && player.transferDestination && (
+            <div>
+              <p className="text-muted-foreground">Drafted By</p>
               <p className="font-medium">{player.transferDestination}</p>
             </div>
           )}
+
           <div className="col-span-2">
             <p className="text-muted-foreground">Previous Team </p>
             <p className="font-medium">{player.highSchoolOrPrevTeam}</p>
