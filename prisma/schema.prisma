@@ -13,20 +13,20 @@ datasource db {
 
 model Player {
   id                   Int     @id @default(autoincrement())
-  jerseyNumber         String
+  jerseyNumber         String?
   name                 String
   position             String?
   height               String
   year                 String
   hometown             String
-  highSchoolOrPrevTeam String
-  status               String
-  formerPlayer         Boolean @default(false)
+  highSchoolOrPrevTeam String?
+  status               String?
+  formerPlayer         Boolean? @default(false)
   transferDestination  String?
   stats                String?
   image                String?
   createdAt            DateTime @default(now())
-  updatedAt            DateTime @updatedAt
+  updatedAt            DateTime? @updatedAt
 
   // Relations to DepthChart
   starterDepthChart    DepthChart[] @relation("Starter")
@@ -43,9 +43,9 @@ model DepthChart {
   backup2Id     Int?
 
   starter       Player? @relation("Starter", fields: [starterId], references: [id])
-  backup1       Player? @relation("Backup1", fields: [backup1Id], references: [id])
   backup2       Player? @relation("Backup2", fields: [backup2Id], references: [id])
-
+  backup1       Player? @relation("Backup1", fields: [backup1Id], references: [id])
   createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
+
+  updatedAt     DateTime? @updatedAt
 }

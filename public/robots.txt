@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Disallow admin pages
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: http://byu.christianfurr.dev//sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1 
