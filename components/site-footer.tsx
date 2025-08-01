@@ -57,7 +57,7 @@ export function SiteFooter() {
         <div className="border-t border-border mt-8 pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-xs text-muted-foreground text-center md:text-left">
-              © 2024 BYU Basketball Tracker. All rights reserved.
+              © 2025 Christian Furr. All rights reserved.
             </p>
             <div className="flex items-center gap-4 text-xs text-muted-foreground">
               <Link href="/privacy" className="hover:text-foreground transition-colors">
