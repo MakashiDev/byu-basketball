@@ -89,7 +89,7 @@ export default function PrivacyPage() {
                 Contact Information
               </h2>
               <p className="mb-4">
-                If you have any questions about this privacy policy, please contact us through the website.
+                If you have any questions about this privacy policy, please contact us at admin@christianfurr.dev 
               </p>
             </section>
             
