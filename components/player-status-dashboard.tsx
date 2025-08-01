@@ -71,41 +71,6 @@ export function PlayerStatusDashboard({ players, depthChart }: PlayerStatusDashb
             </div>
           </div>
         </div>
-
-        {/* Footer */}
-        <footer className="bg-[#002E5D] dark:bg-[#001a33] text-white py-8 mt-12">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-              <div className="flex items-center gap-4">
-                <Image
-                  src="/images/byu-logo.png"
-                  alt="BYU Logo"
-                  width={60}
-                  height={60}
-                />
-                <div>
-                  <h3 className="font-bold text-xl">BYU Cougars</h3>
-                  <p className="text-white/70">
-                    Disclaimer, this is a fan site and is not affiliated with BYU
-                    or the Big 12 Conference
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-6">
-                <Image
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Big_12_logo_in_BYU_colors.svg/2560px-Big_12_logo_in_BYU_colors.svg.png"
-                  alt="Big 12 Logo"
-                  width={80}
-                  height={40}
-                />
-                <div className="h-10 w-0.5 bg-white/20"></div>
-                <p className="text-white/70">
-                  © {new Date().getFullYear()} Christian Furr
-                </p>
-              </div>
-            </div>
-          </div>
-        </footer>
       </>
     )
   }
