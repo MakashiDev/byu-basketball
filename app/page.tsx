@@ -16,21 +16,23 @@ export default async function Home() {
     },
   })
 
-  const order = {
-    committed: 1,
-    projected: 2,
-    returning: 3,
-    likely: 4,
-    unconfirmed: 5,
-    graduated: 6  ,
-    nbaDraft: 7,
-    transferred: 8,
-    transfer: 9,
-    formerWalkOn: 10,
-  };
-
+  // Sort players by jersey number
   const sortedPlayers = players.sort((a, b) => {
-    return (order[a.status as keyof typeof order] ?? 99) - (order[b.status as keyof typeof order] ?? 99);
+    // Handle null/undefined jersey numbers - put them at the end
+    if (!a.jerseyNumber && !b.jerseyNumber) return 0;
+    if (!a.jerseyNumber) return 1;
+    if (!b.jerseyNumber) return -1;
+    
+    // Convert jersey numbers to integers for proper numerical sorting
+    const jerseyA = parseInt(a.jerseyNumber);
+    const jerseyB = parseInt(b.jerseyNumber);
+    
+    // Handle invalid numbers - put them at the end
+    if (isNaN(jerseyA) && isNaN(jerseyB)) return 0;
+    if (isNaN(jerseyA)) return 1;
+    if (isNaN(jerseyB)) return -1;
+    
+    return jerseyA - jerseyB;
   });
 
   // Structured data for SEO
